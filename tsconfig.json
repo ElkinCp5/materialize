@@ -32,13 +32,12 @@
     // ====================================================================
     // RUTAS Y PATHS
     // ====================================================================
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@utilities/*": ["src/utilities/*"],
-      "@types/*": ["src/types/*"],
-      "@scss/*": ["sass/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@utilities/*": ["./src/utilities/*"],
+      "@types/*": ["./src/types/*"],
+      "@scss/*": ["./sass/*"],
     },
     
     // ====================================================================
@@ -68,11 +67,7 @@
     "useDefineForClassFields": true,
     
     // ====================================================================
-    // EXPERIMENTAL/HELPERS
-    // ====================================================================
-    "useUnknownInCatchVariables": true,
-    "exactOptionalPropertyTypes": true,
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     
     // ====================================================================
     // DECORATORS (si se usan)

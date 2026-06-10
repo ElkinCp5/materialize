@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import typescript from '@vitejs/plugin-vue'
 import path from 'path'
 
 export default defineConfig({
@@ -8,42 +7,11 @@ export default defineConfig({
   // ====================================================================
   build: {
     target: 'esnext',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-      format: {
-        comments: false,
-      },
-    },
+    minify: 'esbuild',
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'src/index.ts'),
       },
-      output: [
-        // ESM
-        {
-          file: 'dist/js/materialize.es.js',
-          format: 'es',
-          sourcemap: true,
-        },
-        // UMD
-        {
-          file: 'dist/js/materialize.js',
-          format: 'umd',
-          name: 'Materialize',
-          sourcemap: true,
-        },
-        // IIFE
-        {
-          file: 'dist/js/materialize.iife.js',
-          format: 'iife',
-          name: 'Materialize',
-          sourcemap: true,
-        },
-      ],
       external: [],
     },
     outDir: 'dist',
@@ -71,7 +39,6 @@ export default defineConfig({
     host: '127.0.0.1',
     open: true,
     cors: true,
-    https: false,
   },
 
   preview: {
@@ -103,7 +70,6 @@ export default defineConfig({
           @import "@scss/variables";
           @import "@scss/mixins";
         `,
-        api: 'modern-compiler',
       },
     },
     postcss: {
@@ -111,7 +77,7 @@ export default defineConfig({
         {
           postcssPlugin: 'internal:charset-removal',
           Once(root) {
-            const atRules = []
+            const atRules: any[] = []
             root.walkAtRules('charset', (rule) => {
               if (root.first !== rule) {
                 atRules.push(rule)
