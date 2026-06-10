@@ -135,8 +135,7 @@ npm audit
     "vite": "^5.0.0",
     "sass": "^1.69.0",
     "typescript": "^5.3.0",
-    "eslint": "^8.54.0",
-    "prettier": "^3.1.0",
+    "@biomejs/biome": "^2.4.16",
     "vitest": "^1.0.0",
     "@playwright/test": "^1.40.0"
   }
@@ -320,23 +319,40 @@ function escapeAttribute(value) {
 }
 ```
 
-### 6.2 ESLint Security Rules
+### 6.2 Reglas de Seguridad en Biome (Reemplazando ESLint por errores de dependencias)
 
-```javascript
-// .eslintrc.js
-module.exports = {
-  extends: ['plugin:security/recommended'],
-  plugins: ['security'],
-  rules: {
-    'security/detect-object-injection': 'warn',
-    'security/detect-eval-with-expression': 'error',
-    'security/detect-non-literal-regexp': 'warn',
-    'security/detect-unsafe-regex': 'error',
-    'security/detect-buffer-noassert': 'error',
-    'security/detect-child-process': 'error',
-    'security/detect-disable-mustache-escape': 'error'
+El proyecto migró de ESLint a Biome para resolver conflictos de dependencias que bloqueaban el desarrollo. Biome realiza el linting, formateo y análisis estático en una sola herramienta ultrarrápida.
+
+Para configurar las reglas de linter y seguridad en Biome, se utiliza `biome.json`:
+
+```json
+// biome.json
+{
+  "$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "security": {
+        "noDangerouslySetInnerHtml": "error"
+      },
+      "suspicious": {
+        "noConsoleLog": "warn",
+        "noDebugger": "error",
+        "noEval": "error"
+      }
+    }
   }
-};
+}
+```
+
+Para ejecutar el análisis de código:
+```bash
+# Verificar lint, formato y seguridad
+pnpm lint
+
+# Aplicar correcciones seguras automáticamente
+pnpm lint --write
 ```
 
 ### 6.3 GitHub Security

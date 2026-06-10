@@ -204,8 +204,8 @@ git checkout -b v2-dev
 mkdir -p .ia
 mkdir -p .github/workflows
 
-# 3. Instalar herramientas modernas
-npm install -D vite typescript sass eslint prettier
+# 3. Instalar herramientas modernas (Biome reemplaza ESLint/Prettier por conflictos de dependencias)
+npm install -D vite typescript sass @biomejs/biome
 
 # 4. Inicializar TypeScript
 npx tsc --init

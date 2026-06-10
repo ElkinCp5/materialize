@@ -297,8 +297,7 @@ Frontend Framework:    Vanilla JS + TypeScript (No framework)
 Build Tool:            Vite (next-gen bundler)
 CSS Preprocessor:      SCSS (mantener actual)
 Testing:               Vitest (unit) + Playwright (e2e)
-Linting:               ESLint
-Formatting:            Prettier
+Linting & Formatting:  Biome (reemplazando ESLint/Prettier por conflictos de dependencias)
 CI/CD:                 GitHub Actions
 Package Manager:       npm (Node 18+)
 Documentation:         Markdown + Storybook (opcional)

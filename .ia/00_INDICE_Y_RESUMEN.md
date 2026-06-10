@@ -266,8 +266,7 @@ Total: ~7 meses
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 - [Vitest](https://vitest.dev/) - Testing framework
 - [Playwright](https://playwright.dev/) - E2E testing
-- [ESLint](https://eslint.org/) - Linting
-- [Prettier](https://prettier.io/) - Code formatting
+- [Biome](https://biomejs.dev/) - Linter & Formatter (reemplazando ESLint/Prettier por conflictos de dependencias)
 - [Snyk](https://snyk.io/) - Security scanning
 
 ### Estándares de Referencia

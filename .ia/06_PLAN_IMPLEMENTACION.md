@@ -55,7 +55,8 @@ npm install -D vite @vitejs/plugin-vue typescript sass
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix",
+    "lint": "biome check src/",
+    "format": "biome format src/ --write",
     "test": "vitest",
     "test:ui": "vitest --ui"
   }
@@ -561,7 +562,7 @@ vitest --coverage
 npm audit
 npm audit fix --audit-level=moderate
 npx snyk test
-npx eslint-plugin-security scan
+npx biome check src/
 ```
 
 **Checklist de seguridad**:

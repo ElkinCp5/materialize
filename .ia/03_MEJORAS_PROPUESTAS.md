@@ -117,7 +117,7 @@
   "buildTool": "Vite",
   "language": "TypeScript 5",
   "bundler": "esbuild",
-  "linter": "ESLint + Prettier",
+  "linter": "Biome",
   "testing": "Vitest + Playwright",
   "nodeVersion": "18+"
 }
@@ -129,7 +129,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint . --fix && prettier --write .",
+    "lint": "biome check src/",
+    "format": "biome format src/ --write",
     "test": "vitest",
     "test:e2e": "playwright test"
   },
@@ -137,8 +138,7 @@
     "vite": "^5.0.0",
     "typescript": "^5.3.0",
     "sass": "^1.69.0",
-    "eslint": "^8.54.0",
-    "prettier": "^3.1.0",
+    "@biomejs/biome": "^2.4.16",
     "vitest": "^1.0.0",
     "@playwright/test": "^1.40.0"
   }
@@ -814,18 +814,18 @@ playwright codegen  # Record tests
 
 ## 7. Priorización Recomendada
 
-| Mejora | Impacto | Esfuerzo | Prioridad |
-|--------|---------|----------|-----------|
-| CSS Variables | 🔴 Alto | 60h | 1 |
-| Build System | 🔴 Alto | 40h | 2 |
-| Accesibilidad | 🔴 Alto | 100h | 3 |
-| Remover jQuery | 🔴 Alto | 80h | 4 |
-| Dark Mode | 🟡 Medio | 20h | 5 |
-| Componentes faltantes | 🟡 Medio | 120h | 6 |
-| Utilidades CSS | 🟡 Medio | 40h | 7 |
-| TypeScript | 🟠 Normal | 80h | 8 |
-| RTL Support | 🟠 Normal | 30h | 9 |
-| Seguridad | 🔴 Alto | 50h | 10 |
+| Mejora                | Impacto  | Esfuerzo | Prioridad |
+| --------------------- | -------- | -------- | --------- |
+| CSS Variables         | 🔴 Alto   | 60h      | 1         |
+| Build System          | 🔴 Alto   | 40h      | 2         |
+| Accesibilidad         | 🔴 Alto   | 100h     | 3         |
+| Remover jQuery        | 🔴 Alto   | 80h      | 4         |
+| Dark Mode             | 🟡 Medio  | 20h      | 5         |
+| Componentes faltantes | 🟡 Medio  | 120h     | 6         |
+| Utilidades CSS        | 🟡 Medio  | 40h      | 7         |
+| TypeScript            | 🟠 Normal | 80h      | 8         |
+| RTL Support           | 🟠 Normal | 30h      | 9         |
+| Seguridad             | 🔴 Alto   | 50h      | 10        |
 
 **Total estimado**: ~640 horas
 
