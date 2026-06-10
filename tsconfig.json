@@ -1,0 +1,110 @@
+{
+  "compilerOptions": {
+    // ====================================================================
+    // VERSIÓN DE OBJETIVO
+    // ====================================================================
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    
+    // ====================================================================
+    // MÓDULOS
+    // ====================================================================
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    
+    // ====================================================================
+    // TIPOS
+    // ====================================================================
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node",
+      "vitest/globals",
+      "@vitest/ui"
+    ],
+    
+    // ====================================================================
+    // RUTAS Y PATHS
+    // ====================================================================
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@utilities/*": ["src/utilities/*"],
+      "@types/*": ["src/types/*"],
+      "@scss/*": ["sass/*"]
+    },
+    
+    // ====================================================================
+    // OUTPUT
+    // ====================================================================
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "removeComments": true,
+    
+    // ====================================================================
+    // STRICT MODE OPTIONS
+    // ====================================================================
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "useDefineForClassFields": true,
+    
+    // ====================================================================
+    // EXPERIMENTAL/HELPERS
+    // ====================================================================
+    "useUnknownInCatchVariables": true,
+    "exactOptionalPropertyTypes": true,
+    "importsNotUsedAsValues": "error",
+    
+    // ====================================================================
+    // DECORATORS (si se usan)
+    // ====================================================================
+    "experimentalDecorators": false,
+    "emitDecoratorMetadata": false,
+    
+    // ====================================================================
+    // INTEROP
+    // ====================================================================
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true,
+    "noEmitOnError": true
+  },
+  
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts"
+  ],
+  
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".pnpm-store",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ],
+  
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}

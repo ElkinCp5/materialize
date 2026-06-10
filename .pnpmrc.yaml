@@ -1,0 +1,16 @@
+# .pnpmrc.yaml - Configuración de pnpm
+# 
+# Documentación: https://pnpm.io/configuring
+
+save-exact=true
+verify-store-integrity=true
+audit-level=moderate
+
+# Override para resolver la versión correcta de @aashutoshrathi/word-wrap
+# pnpm forzará usar 1.2.6 en lugar de la versión 1.2.3 que no existe
+overrides:
+  "@aashutoshrathi/word-wrap": "1.2.6"
+
+# Registro oficial
+registry=https://registry.npmjs.org/
+
