@@ -1,32 +1,37 @@
-
+// ==========================================================================
+// Materialize — Cards
+// Migrated to CSS Custom Properties with SCSS fallbacks.
+// ==========================================================================
 
 .card-panel {
-  transition: box-shadow .25s;
-  padding: $card-padding;
+  transition: box-shadow var(--mz-duration-base, .25s) var(--mz-ease);
+  padding: var(--mz-card-padding, $card-padding);
   margin: $element-top-margin 0 $element-bottom-margin 0;
-  border-radius: 2px;
+  border-radius: var(--mz-card-border-radius, 2px);
+  background-color: var(--mz-surface-card, $card-bg-color);
+  color: var(--mz-text-primary);
   @extend .z-depth-1;
-  background-color: $card-bg-color;
 }
 
 .card {
   position: relative;
   margin: $element-top-margin 0 $element-bottom-margin 0;
-  background-color: $card-bg-color;
-  transition: box-shadow .25s;
-  border-radius: 2px;
+  background-color: var(--mz-surface-card, $card-bg-color);
+  color: var(--mz-text-primary);
+  transition: box-shadow var(--mz-duration-base, .25s) var(--mz-ease),
+              background-color var(--mz-duration-base) var(--mz-ease),
+              color var(--mz-duration-base) var(--mz-ease);
+  border-radius: var(--mz-card-border-radius, 2px);
   @extend .z-depth-1;
-
 
   .card-title {
     font-size: 24px;
-    font-weight: 300;
-    &.activator {
-      cursor: pointer;
-    }
+    font-weight: var(--mz-font-weight-light, 300);
+
+    &.activator { cursor: pointer; }
   }
 
-  // Card Sizes
+  // Fixed-height variants
   &.small, &.medium, &.large {
     position: relative;
 
@@ -34,44 +39,29 @@
       max-height: 60%;
       overflow: hidden;
     }
-    .card-image + .card-content {
-      max-height: 40%;
-    }
+    .card-image + .card-content { max-height: 40%; }
     .card-content {
       max-height: 100%;
       overflow: hidden;
     }
     .card-action {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
     }
   }
 
-  &.small {
-    height: 300px;
-  }
+  &.small  { height: 300px; }
+  &.medium { height: 400px; }
+  &.large  { height: 500px; }
 
-  &.medium {
-    height: 400px;
-  }
-
-  &.large {
-    height: 500px;
-  }
-
-  // Horizontal Cards
+  // Horizontal card
   &.horizontal {
     &.small, &.medium, &.large {
       .card-image {
         height: 100%;
         max-height: none;
         overflow: visible;
-
-        img {
-          height: 100%;
-        }
+        img { height: 100%; }
       }
     }
 
@@ -80,7 +70,7 @@
     .card-image {
       max-width: 50%;
       img {
-        border-radius: 2px 0 0 2px;
+        border-radius: var(--mz-card-border-radius, 2px) 0 0 var(--mz-card-border-radius, 2px);
         max-width: 100%;
         width: auto;
       }
@@ -92,104 +82,86 @@
       flex: 1;
       position: relative;
 
-      .card-content {
-        flex-grow: 1;
-      }
+      .card-content { flex-grow: 1; }
     }
   }
 
-  // Sticky Action Section
+  // Sticky action
   &.sticky-action {
-    .card-action {
-      z-index: 2;
-    }
-
-    .card-reveal {
-      z-index: 1;
-      padding-bottom: 64px;
-    }
+    .card-action { z-index: 2; }
+    .card-reveal  { z-index: 1; padding-bottom: 64px; }
   }
 
-
-
-
+  // Image section
   .card-image {
     position: relative;
 
-    // Image background for content
     img {
       display: block;
-      border-radius: 2px 2px 0 0;
+      border-radius: var(--mz-card-border-radius, 2px) var(--mz-card-border-radius, 2px) 0 0;
       position: relative;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
+      left: 0; right: 0; top: 0; bottom: 0;
       width: 100%;
     }
 
     .card-title {
-      color: $card-bg-color;
+      color: var(--mz-color-white, $card-bg-color);
       position: absolute;
-      bottom: 0;
-      left: 0;
+      bottom: 0; left: 0;
       max-width: 100%;
-      padding: $card-padding;
+      padding: var(--mz-card-padding, $card-padding);
     }
   }
 
+  // Content section
   .card-content {
-    padding: $card-padding;
-    border-radius: 0 0 2px 2px;
+    padding: var(--mz-card-padding, $card-padding);
+    border-radius: 0 0 var(--mz-card-border-radius, 2px) var(--mz-card-border-radius, 2px);
 
-    p {
-      margin: 0;
-    }
+    p { margin: 0; }
+
     .card-title {
       display: block;
       line-height: 32px;
       margin-bottom: 8px;
 
-      i {
-        line-height: 32px;
-      }
+      i { line-height: 32px; }
     }
   }
 
+  // Action section
   .card-action {
     &:last-child {
-      border-radius: 0 0 2px 2px;
+      border-radius: 0 0 var(--mz-card-border-radius, 2px) var(--mz-card-border-radius, 2px);
     }
-    background-color: inherit; // Use inherit to inherit color classes
-    border-top: 1px solid rgba(160,160,160,.2);
+    background-color: inherit;
+    border-top: 1px solid var(--mz-border-primary, rgba(160, 160, 160, .2));
     position: relative;
-    padding: 16px $card-padding;
+    padding: var(--mz-spacing-md, 16px) var(--mz-card-padding, $card-padding);
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
-      color: $card-link-color;
-      margin-right: $card-padding;
-      transition: color .3s ease;
+      color: var(--mz-warning, $card-link-color);
+      margin-right: var(--mz-card-padding, $card-padding);
+      transition: color var(--mz-duration-base, .3s) var(--mz-ease);
       text-transform: uppercase;
 
-      &:hover { color: $card-link-color-light; }
+      &:hover { color: var(--mz-warning-light, $card-link-color-light); }
     }
   }
 
+  // Reveal overlay
   .card-reveal {
-    padding: $card-padding;
+    padding: var(--mz-card-padding, $card-padding);
     position: absolute;
-    background-color: $card-bg-color;
+    background-color: var(--mz-surface-card, $card-bg-color);
+    color: var(--mz-text-primary);
     width: 100%;
     overflow-y: auto;
-    left: 0;
-    top: 100%;
+    left: 0; top: 100%;
     height: 100%;
     z-index: 3;
     display: none;
 
-    .card-title {
-      cursor: pointer;
-      display: block;
-    }
+    .card-title { cursor: pointer; display: block; }
   }
 }

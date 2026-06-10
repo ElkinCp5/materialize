@@ -1,21 +1,28 @@
+// ==========================================================================
+// Materialize — Chips
+// Migrated to CSS Custom Properties with SCSS fallbacks.
+// ==========================================================================
+
 .chip {
   &:focus {
     outline: none;
-    background-color: $chip-selected-color;
-    color: #fff;
+    background-color: var(--mz-secondary, $chip-selected-color);
+    color: var(--mz-text-inverse, #fff);
   }
 
   display: inline-block;
   height: 32px;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(0,0,0,.6);
+  font-size: var(--mz-font-size-sm, 13px);
+  font-weight: var(--mz-font-weight-medium, 500);
+  color: var(--mz-text-secondary, rgba(0, 0, 0, .6));
   line-height: 32px;
   padding: 0 12px;
   border-radius: 16px;
-  background-color: $chip-bg-color;
+  background-color: var(--mz-bg-tertiary, $chip-bg-color);
   margin-bottom: $chip-margin;
   margin-right: $chip-margin;
+  transition: background-color var(--mz-duration-fast) var(--mz-ease),
+              color var(--mz-duration-fast) var(--mz-ease);
 
   > img {
     float: left;
@@ -36,29 +43,28 @@
 
 .chips {
   border: none;
-  border-bottom: 1px solid $chip-border-color;
+  border-bottom: var(--mz-border-width) var(--mz-border-style) var(--mz-border-primary, $chip-border-color);
   box-shadow: none;
   margin: $input-margin;
   min-height: 45px;
   outline: none;
-  transition: all .3s;
+  transition: border-color var(--mz-duration-base, .3s) var(--mz-ease),
+              box-shadow var(--mz-duration-base, .3s) var(--mz-ease);
 
   &.focus {
-    border-bottom: 1px solid $chip-selected-color;
-    box-shadow: 0 1px 0 0 $chip-selected-color;
+    border-bottom: var(--mz-border-width) var(--mz-border-style) var(--mz-secondary, $chip-selected-color);
+    box-shadow: 0 1px 0 0 var(--mz-secondary, $chip-selected-color);
   }
 
-  &:hover {
-    cursor: text;
-  }
+  &:hover { cursor: text; }
 
   .input {
     background: none;
     border: 0;
-    color: rgba(0,0,0,.6);
+    color: var(--mz-text-primary, rgba(0, 0, 0, .6));
     display: inline-block;
-    font-size: $input-font-size;
-    height: $input-height;
+    font-size: var(--mz-input-font-size, $input-font-size);
+    height: var(--mz-input-height, $input-height);
     line-height: 32px;
     outline: 0;
     margin: 0;
@@ -71,20 +77,21 @@
     box-shadow: none !important;
   }
 
-  // Autocomplete
+  // Autocomplete results
   .autocomplete-content {
     margin-top: 0;
     margin-bottom: 0;
   }
 }
 
-// Form prefix
+// Form prefix spacing
 .prefix ~ .chips {
   margin-left: 3rem;
   width: 92%;
   width: calc(100% - 3rem);
 }
-.chips:empty ~ label  {
+
+.chips:empty ~ label {
   font-size: 0.8rem;
   transform: translateY(-140%);
 }

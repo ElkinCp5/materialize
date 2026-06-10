@@ -1,87 +1,93 @@
+// ==========================================================================
+// Materialize — Sidenav
+// Migrated to CSS Custom Properties with SCSS fallbacks.
+// ==========================================================================
+
 .sidenav {
   position: fixed;
-  width: $sidenav-width;
+  width: var(--mz-sidenav-width, $sidenav-width);
   left: 0;
   top: 0;
   margin: 0;
-  transform: translateX(-100%);
   height: 100%;
   height: calc(100% + 60px);
-  height: -moz-calc(100%); //Temporary Firefox Fix
   padding-bottom: 60px;
-  background-color: $sidenav-bg-color;
-  z-index: 999;
+  background-color: var(--mz-surface-sidenav, $sidenav-bg-color);
+  color: var(--mz-sidenav-text, $sidenav-font-color);
+  z-index: var(--mz-z-fixed, 999);
   overflow-y: auto;
   will-change: transform;
   backface-visibility: hidden;
   transform: translateX(-105%);
+  transition: transform var(--mz-duration-base, .3s) var(--mz-ease-cubic, cubic-bezier(0.4, 0, 0.2, 1)),
+              background-color var(--mz-duration-base) var(--mz-ease),
+              color var(--mz-duration-base) var(--mz-ease);
 
   @extend .z-depth-1;
 
-  // Right Align
+  // Right aligned variant
   &.right-aligned {
     right: 0;
-    transform: translateX(105%);
     left: auto;
-    transform: translateX(100%);
+    transform: translateX(105%);
   }
 
-  .collapsible {
-    margin: 0;
-  }
-
+  .collapsible { margin: 0; }
 
   li {
     float: none;
-    line-height: $sidenav-line-height;
+    line-height: var(--mz-sidenav-item-height, $sidenav-line-height);
 
-    &.active { background-color: rgba(0,0,0,.05); }
+    &.active { background-color: rgba(0, 0, 0, .05); }
   }
 
-  // Style non btn anchors
+  // Non-button anchors
   li > a:not(.btn):not(.btn-large):not(.btn-flat):not(.btn-floating) {
-    &:hover { background-color: rgba(0,0,0,.05);}
+    &:hover { background-color: rgba(0, 0, 0, .05); }
 
-    color: $sidenav-font-color;
+    color: var(--mz-sidenav-text, $sidenav-font-color);
     display: block;
-    font-size: $sidenav-font-size;
-    font-weight: 500;
-    height: $sidenav-item-height;
-    line-height: $sidenav-line-height;
+    font-size: var(--mz-font-size-base, $sidenav-font-size);
+    font-weight: var(--mz-font-weight-medium, 500);
+    height: var(--mz-sidenav-item-height, $sidenav-item-height);
+    line-height: var(--mz-sidenav-item-height, $sidenav-line-height);
     padding: 0 ($sidenav-padding * 2);
+    transition: background-color var(--mz-duration-fast) var(--mz-ease);
 
     & > i,
-    & > [class^="mdi-"], li > a > [class*="mdi-"],
+    & > [class^="mdi-"],
+    li > a > [class*="mdi-"],
     & > i.material-icons {
       float: left;
-      height: $sidenav-item-height;
-      line-height: $sidenav-line-height;
+      height: var(--mz-sidenav-item-height, $sidenav-item-height);
+      line-height: var(--mz-sidenav-item-height, $sidenav-line-height);
       margin: 0 ($sidenav-padding * 2) 0 0;
       width: $sidenav-item-height / 2;
-      color: rgba(0,0,0,.54);
+      color: rgba(0, 0, 0, .54);
     }
   }
 
-  // Stlye btn anchors
-  li > .btn, li > .btn-large, li > .btn-flat, li > .btn-floating {
+  // Button anchors
+  li > .btn,
+  li > .btn-large,
+  li > .btn-flat,
+  li > .btn-floating {
     margin: 10px ($sidenav-padding * 2);
   }
 
   .divider {
+    background-color: var(--mz-border-primary);
     margin: ($sidenav-padding / 2) 0 0 0;
   }
 
   .subheader {
-    &:hover {
-      background-color: transparent;
-    }
-
+    &:hover { background-color: transparent; }
     cursor: initial;
     pointer-events: none;
-    color: rgba(0,0,0,.54);
-    font-size: $sidenav-font-size;
-    font-weight: 500;
-    line-height: $sidenav-line-height;
+    color: var(--mz-text-tertiary, rgba(0, 0, 0, .54));
+    font-size: var(--mz-font-size-base, $sidenav-font-size);
+    font-weight: var(--mz-font-weight-medium, 500);
+    line-height: var(--mz-sidenav-item-height, $sidenav-line-height);
   }
 
   .user-view {
@@ -98,16 +104,11 @@
     .background {
       overflow: hidden;
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      top: 0; right: 0; bottom: 0; left: 0;
       z-index: -1;
     }
 
-    .circle, .name, .email {
-      display: block;
-    }
+    .circle, .name, .email { display: block; }
 
     .circle {
       height: 64px;
@@ -116,53 +117,51 @@
 
     .name,
     .email {
-      font-size: $sidenav-font-size;
-      line-height: $sidenav-line-height / 2;
+      font-size: var(--mz-font-size-base, $sidenav-font-size);
+      line-height: calc(var(--mz-sidenav-item-height, #{$sidenav-line-height}) / 2);
     }
 
     .name {
       margin-top: 16px;
-      font-weight: 500;
+      font-weight: var(--mz-font-weight-medium, 500);
     }
 
     .email {
       padding-bottom: 16px;
-      font-weight: 400;
+      font-weight: var(--mz-font-weight-normal, 400);
     }
   }
 }
 
 
-// Touch interaction
+// ---------------------------------------------------------------------------
+// Drag touch target
+// ---------------------------------------------------------------------------
+
 .drag-target {
-  // Right Align
-  &.right-aligned {
-    right: 0;
-  }
+  &.right-aligned { right: 0; }
 
   height: 100%;
   width: 10px;
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 998;
+  top: 0; left: 0;
+  z-index: var(--mz-z-modal-backdrop, 998);
 }
 
 
-// Fixed Sidenav shown
+// ---------------------------------------------------------------------------
+// Fixed sidenav
+// ---------------------------------------------------------------------------
+
 .sidenav.sidenav-fixed {
-  // Right Align
-  &.right-aligned {
-    right: 0;
-    left: auto;
-  }
+  &.right-aligned { right: 0; left: auto; }
 
   left: 0;
   transform: translateX(0);
   position: fixed;
 }
 
-// Fixed Sidenav hide on smaller
+// Hide fixed sidenav on smaller screens
 @media #{$medium-and-down} {
   .sidenav {
     &.sidenav-fixed {
@@ -173,37 +172,37 @@
       }
     }
 
-    > a {
-      padding: 0 $sidenav-padding;
-    }
+    > a { padding: 0 $sidenav-padding; }
 
-    .user-view {
-      padding: $sidenav-padding $sidenav-padding 0;
-    }
+    .user-view { padding: $sidenav-padding $sidenav-padding 0; }
   }
 }
 
+
+// ---------------------------------------------------------------------------
+// Collapsible active state inside sidenav
+// ---------------------------------------------------------------------------
 
 .sidenav .collapsible-body > ul:not(.collapsible) > li.active,
 .sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
-  background-color: $primary-color;
-  a {
-    color: $sidenav-bg-color;
-  }
-}
-.sidenav .collapsible-body {
-  padding: 0;
+  background-color: var(--mz-primary, $primary-color);
+
+  a { color: var(--mz-text-inverse, $sidenav-bg-color); }
 }
 
+.sidenav .collapsible-body { padding: 0; }
+
+
+// ---------------------------------------------------------------------------
+// Sidenav overlay (backdrop)
+// ---------------------------------------------------------------------------
 
 .sidenav-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   opacity: 0;
   height: 120vh;
-  background-color: rgba(0,0,0,.5);
-  z-index: 997;
+  background-color: var(--mz-bg-backdrop, rgba(0, 0, 0, .5));
+  z-index: var(--mz-z-dropdown, 997);
   display: none;
 }

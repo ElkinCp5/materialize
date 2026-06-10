@@ -1,0 +1,480 @@
+// ==========================================================================
+// Materialize CSS Custom Properties (Design Tokens)
+// ==========================================================================
+//
+// This file defines the complete token system for Materialize v2.
+// All tokens use the --mz- prefix to avoid collisions.
+//
+// Usage:
+//   - Consume via var(--mz-*) in any SCSS or CSS file
+//   - Override at :root for global changes (no recompile needed)
+//   - Override at [data-theme="..."] for named themes
+//   - Dark mode respects prefers-color-scheme automatically
+//
+// Table of Contents:
+//   1.  Palette — Brand Colors
+//   2.  Palette — Grayscale
+//   3.  Theme Light (default)
+//   4.  Theme Dark
+//   5.  Auto theme (prefers-color-scheme)
+//   6.  Typography
+//   7.  Spacing
+//   8.  Borders & Radius
+//   9.  Shadows / Elevation
+//   10. Transitions
+//   11. Z-Index layers
+//   12. Breakpoints (reference only – cannot be used in media queries)
+
+// --------------------------------------------------------------------------
+// 1. Palette — Brand Colors
+// --------------------------------------------------------------------------
+
+:root {
+  // --- Primary (Materialize Red) ---
+  --mz-primary:          #ee6e73;
+  --mz-primary-light:    #f3989b;
+  --mz-primary-lighter:  #ffcccc;
+  --mz-primary-dark:     #d0181e;
+  --mz-primary-darker:   #8b1014;
+
+  // --- Secondary (Teal) ---
+  --mz-secondary:        #26a69a;
+  --mz-secondary-light:  #4db6ac;
+  --mz-secondary-lighter:#80cbc4;
+  --mz-secondary-dark:   #00897b;
+  --mz-secondary-darker: #004d40;
+
+  // --- Semantic ---
+  --mz-success:          #4caf50;
+  --mz-success-light:    #81c784;
+  --mz-success-dark:     #2e7d32;
+
+  --mz-warning:          #ff9800;
+  --mz-warning-light:    #ffb74d;
+  --mz-warning-dark:     #f57c00;
+
+  --mz-danger:           #f44336;
+  --mz-danger-light:     #ef5350;
+  --mz-danger-dark:      #c62828;
+
+  --mz-info:             #2196f3;
+  --mz-info-light:       #64b5f6;
+  --mz-info-dark:        #1565c0;
+}
+
+// --------------------------------------------------------------------------
+// 2. Palette — Grayscale
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-gray-50:   #fafafa;
+  --mz-gray-100:  #f5f5f5;
+  --mz-gray-200:  #eeeeee;
+  --mz-gray-300:  #e0e0e0;
+  --mz-gray-400:  #bdbdbd;
+  --mz-gray-500:  #9e9e9e;
+  --mz-gray-600:  #757575;
+  --mz-gray-700:  #616161;
+  --mz-gray-800:  #424242;
+  --mz-gray-900:  #212121;
+
+  --mz-color-white: #ffffff;
+  --mz-color-black: #000000;
+}
+
+// --------------------------------------------------------------------------
+// 3. Theme Light (default / [data-theme="light"])
+// --------------------------------------------------------------------------
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  // Backgrounds
+  --mz-bg-primary:    #ffffff;
+  --mz-bg-secondary:  #fafafa;
+  --mz-bg-tertiary:   #f5f5f5;
+
+  // Text
+  --mz-text-primary:   #212121;
+  --mz-text-secondary: #666666;
+  --mz-text-tertiary:  #999999;
+  --mz-text-disabled:  #bdbdbd;
+  --mz-text-inverse:   #ffffff;
+
+  // Borders
+  --mz-border-primary:   #e0e0e0;
+  --mz-border-secondary: #f0f0f0;
+  --mz-border-focus:     #2196f3;
+
+  // Overlays
+  --mz-bg-overlay:   rgba(0, 0, 0, 0.5);
+  --mz-bg-backdrop:  rgba(0, 0, 0, 0.3);
+
+  // Component surfaces
+  --mz-surface-card:     #ffffff;
+  --mz-surface-modal:    #fafafa;
+  --mz-surface-sidenav:  #ffffff;
+  --mz-surface-dropdown: #ffffff;
+  --mz-surface-navbar:   var(--mz-primary);
+  --mz-surface-footer:   var(--mz-primary);
+  --mz-surface-toast:    #323232;
+
+  // Component text on surfaces
+  --mz-navbar-text:      #ffffff;
+  --mz-sidenav-text:     rgba(0, 0, 0, 0.87);
+  --mz-dropdown-text:    var(--mz-secondary);
+}
+
+// --------------------------------------------------------------------------
+// 4. Theme Dark ([data-theme="dark"])
+// --------------------------------------------------------------------------
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  // Palette overrides for dark context
+  --mz-primary:          #f3989b;
+  --mz-primary-light:    #ffcccc;
+  --mz-primary-dark:     #c62828;
+
+  --mz-secondary:        #80cbc4;
+  --mz-secondary-light:  #b2dfdb;
+  --mz-secondary-dark:   #004d40;
+
+  // Grayscale inversion
+  --mz-gray-50:   #2a2a2a;
+  --mz-gray-100:  #383838;
+  --mz-gray-200:  #424242;
+  --mz-gray-300:  #4a4a4a;
+  --mz-gray-400:  #616161;
+  --mz-gray-500:  #757575;
+  --mz-gray-600:  #9e9e9e;
+  --mz-gray-700:  #bdbdbd;
+  --mz-gray-800:  #e0e0e0;
+  --mz-gray-900:  #f5f5f5;
+
+  // Backgrounds
+  --mz-bg-primary:    #121212;
+  --mz-bg-secondary:  #1e1e1e;
+  --mz-bg-tertiary:   #2c2c2c;
+
+  // Text
+  --mz-text-primary:   #ffffff;
+  --mz-text-secondary: #b3b3b3;
+  --mz-text-tertiary:  #808080;
+  --mz-text-disabled:  #5a5a5a;
+  --mz-text-inverse:   #212121;
+
+  // Borders
+  --mz-border-primary:   #3f3f3f;
+  --mz-border-secondary: #2c2c2c;
+  --mz-border-focus:     #64b5f6;
+
+  // Overlays
+  --mz-bg-overlay:   rgba(0, 0, 0, 0.8);
+  --mz-bg-backdrop:  rgba(0, 0, 0, 0.6);
+
+  // Component surfaces
+  --mz-surface-card:     #1e1e1e;
+  --mz-surface-modal:    #1e1e1e;
+  --mz-surface-sidenav:  #1e1e1e;
+  --mz-surface-dropdown: #2c2c2c;
+  --mz-surface-navbar:   #1e1e1e;
+  --mz-surface-footer:   #1a1a1a;
+  --mz-surface-toast:    #424242;
+
+  // Component text on surfaces
+  --mz-navbar-text:      #ffffff;
+  --mz-sidenav-text:     rgba(255, 255, 255, 0.87);
+  --mz-dropdown-text:    var(--mz-secondary);
+}
+
+// --------------------------------------------------------------------------
+// 5. Automatic theme (prefers-color-scheme)
+//    Only applies when [data-theme] attribute is NOT set.
+// --------------------------------------------------------------------------
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    --mz-primary:          #f3989b;
+    --mz-primary-light:    #ffcccc;
+    --mz-primary-dark:     #c62828;
+
+    --mz-secondary:        #80cbc4;
+    --mz-secondary-light:  #b2dfdb;
+    --mz-secondary-dark:   #004d40;
+
+    --mz-gray-50:   #2a2a2a;
+    --mz-gray-100:  #383838;
+    --mz-gray-200:  #424242;
+    --mz-gray-300:  #4a4a4a;
+    --mz-gray-400:  #616161;
+    --mz-gray-500:  #757575;
+    --mz-gray-600:  #9e9e9e;
+    --mz-gray-700:  #bdbdbd;
+    --mz-gray-800:  #e0e0e0;
+    --mz-gray-900:  #f5f5f5;
+
+    --mz-bg-primary:    #121212;
+    --mz-bg-secondary:  #1e1e1e;
+    --mz-bg-tertiary:   #2c2c2c;
+
+    --mz-text-primary:   #ffffff;
+    --mz-text-secondary: #b3b3b3;
+    --mz-text-tertiary:  #808080;
+    --mz-text-disabled:  #5a5a5a;
+    --mz-text-inverse:   #212121;
+
+    --mz-border-primary:   #3f3f3f;
+    --mz-border-secondary: #2c2c2c;
+    --mz-border-focus:     #64b5f6;
+
+    --mz-bg-overlay:   rgba(0, 0, 0, 0.8);
+    --mz-bg-backdrop:  rgba(0, 0, 0, 0.6);
+
+    --mz-surface-card:     #1e1e1e;
+    --mz-surface-modal:    #1e1e1e;
+    --mz-surface-sidenav:  #1e1e1e;
+    --mz-surface-dropdown: #2c2c2c;
+    --mz-surface-navbar:   #1e1e1e;
+    --mz-surface-footer:   #1a1a1a;
+    --mz-surface-toast:    #424242;
+
+    --mz-navbar-text:      #ffffff;
+    --mz-sidenav-text:     rgba(255, 255, 255, 0.87);
+    --mz-dropdown-text:    var(--mz-secondary);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+
+    --mz-primary:          #ee6e73;
+    --mz-primary-light:    #f3989b;
+    --mz-primary-dark:     #d0181e;
+
+    --mz-secondary:        #26a69a;
+    --mz-secondary-light:  #4db6ac;
+    --mz-secondary-dark:   #00897b;
+
+    --mz-bg-primary:    #ffffff;
+    --mz-bg-secondary:  #fafafa;
+    --mz-bg-tertiary:   #f5f5f5;
+
+    --mz-text-primary:   #212121;
+    --mz-text-secondary: #666666;
+    --mz-text-tertiary:  #999999;
+    --mz-text-disabled:  #bdbdbd;
+    --mz-text-inverse:   #ffffff;
+
+    --mz-border-primary:   #e0e0e0;
+    --mz-border-secondary: #f0f0f0;
+    --mz-border-focus:     #2196f3;
+
+    --mz-bg-overlay:   rgba(0, 0, 0, 0.5);
+    --mz-bg-backdrop:  rgba(0, 0, 0, 0.3);
+
+    --mz-surface-card:     #ffffff;
+    --mz-surface-modal:    #fafafa;
+    --mz-surface-sidenav:  #ffffff;
+    --mz-surface-dropdown: #ffffff;
+    --mz-surface-navbar:   var(--mz-primary);
+    --mz-surface-footer:   var(--mz-primary);
+    --mz-surface-toast:    #323232;
+
+    --mz-navbar-text:      #ffffff;
+    --mz-sidenav-text:     rgba(0, 0, 0, 0.87);
+    --mz-dropdown-text:    var(--mz-secondary);
+  }
+}
+
+// --------------------------------------------------------------------------
+// 6. Typography
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-font-family-base:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+  --mz-font-family-monospace:
+    SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  --mz-font-size-xs:   12px;
+  --mz-font-size-sm:   13px;
+  --mz-font-size-base: 14px;
+  --mz-font-size-lg:   16px;
+  --mz-font-size-xl:   18px;
+  --mz-font-size-2xl:  20px;
+  --mz-font-size-3xl:  24px;
+  --mz-font-size-4xl:  28px;
+  --mz-font-size-5xl:  32px;
+
+  --mz-font-weight-light:    300;
+  --mz-font-weight-normal:   400;
+  --mz-font-weight-medium:   500;
+  --mz-font-weight-semibold: 600;
+  --mz-font-weight-bold:     700;
+
+  --mz-line-height-tight:   1.25;
+  --mz-line-height-normal:  1.5;
+  --mz-line-height-relaxed: 1.75;
+  --mz-line-height-loose:   2;
+}
+
+// --------------------------------------------------------------------------
+// 7. Spacing (4 px base grid)
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-spacing-xs:  4px;
+  --mz-spacing-sm:  8px;
+  --mz-spacing-md:  16px;
+  --mz-spacing-lg:  24px;
+  --mz-spacing-xl:  32px;
+  --mz-spacing-2xl: 48px;
+  --mz-spacing-3xl: 64px;
+
+  // Component shortcuts
+  --mz-btn-padding-x:        var(--mz-spacing-md);
+  --mz-btn-padding-y:        0;
+  --mz-btn-font-size:        var(--mz-font-size-base);
+  --mz-btn-border-radius:    var(--mz-border-radius-sm);
+  --mz-btn-height:           36px;
+  --mz-btn-height-lg:        54px;
+  --mz-btn-height-sm:        32px;
+
+  --mz-input-padding-x:      var(--mz-spacing-md);
+  --mz-input-padding-y:      var(--mz-spacing-sm);
+  --mz-input-font-size:      var(--mz-font-size-lg);
+  --mz-input-height:         3rem;
+
+  --mz-card-padding:         var(--mz-spacing-lg);
+  --mz-card-margin-bottom:   var(--mz-spacing-lg);
+  --mz-card-border-radius:   var(--mz-border-radius-md);
+
+  --mz-navbar-height:        64px;
+  --mz-navbar-height-mobile: 56px;
+
+  --mz-sidenav-width:        300px;
+  --mz-sidenav-item-height:  48px;
+}
+
+// --------------------------------------------------------------------------
+// 8. Borders & Radius
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-border-radius-sm:   2px;
+  --mz-border-radius-md:   4px;
+  --mz-border-radius-lg:   8px;
+  --mz-border-radius-xl:   12px;
+  --mz-border-radius-full: 50%;
+
+  --mz-border-width:        1px;
+  --mz-border-width-thick:  2px;
+  --mz-border-width-thicker:3px;
+  --mz-border-style:        solid;
+}
+
+// --------------------------------------------------------------------------
+// 9. Shadows / Elevation (Material Design dp scale)
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-shadow-none: none;
+
+  --mz-shadow-xs:
+    0 1px 2px rgba(0, 0, 0, 0.05);
+
+  --mz-shadow-sm:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px 0 rgba(0, 0, 0, 0.20);
+
+  --mz-shadow-sm-half:
+    0 3px 3px 0 rgba(0, 0, 0, 0.14),
+    0 1px 7px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -1px rgba(0, 0, 0, 0.20);
+
+  --mz-shadow-md:
+    0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.30);
+
+  --mz-shadow-lg:
+    0 8px 17px 2px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12),
+    0 5px 5px -3px rgba(0, 0, 0, 0.20);
+
+  --mz-shadow-xl:
+    0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12),
+    0 8px 10px -7px rgba(0, 0, 0, 0.20);
+
+  --mz-shadow-2xl:
+    0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0 11px 15px -7px rgba(0, 0, 0, 0.20);
+
+  --mz-shadow-inner:
+    inset 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+// --------------------------------------------------------------------------
+// 10. Transitions
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-duration-fast:   150ms;
+  --mz-duration-base:   300ms;
+  --mz-duration-slow:   500ms;
+  --mz-duration-slower: 1000ms;
+
+  --mz-ease:         ease;
+  --mz-ease-linear:  linear;
+  --mz-ease-in:      ease-in;
+  --mz-ease-out:     ease-out;
+  --mz-ease-in-out:  ease-in-out;
+  --mz-ease-cubic:   cubic-bezier(0.4, 0, 0.2, 1);
+
+  --mz-transition-base:      all var(--mz-duration-base) var(--mz-ease);
+  --mz-transition-fade:      opacity var(--mz-duration-base) var(--mz-ease);
+  --mz-transition-transform: transform var(--mz-duration-base) var(--mz-ease);
+  --mz-transition-color:     color var(--mz-duration-base) var(--mz-ease),
+                              background-color var(--mz-duration-base) var(--mz-ease);
+}
+
+// --------------------------------------------------------------------------
+// 11. Z-Index layers
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-z-negative:       -1;
+  --mz-z-base:            0;
+  --mz-z-dropdown:     1000;
+  --mz-z-sticky:       1020;
+  --mz-z-fixed:        1030;
+  --mz-z-modal-backdrop: 1040;
+  --mz-z-modal:        1050;
+  --mz-z-popover:      1060;
+  --mz-z-tooltip:      1070;
+  --mz-z-toast:        1080;
+}
+
+// --------------------------------------------------------------------------
+// 12. Breakpoint references (informational — not usable in @media queries)
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-breakpoint-xs:  0px;
+  --mz-breakpoint-sm:  600px;
+  --mz-breakpoint-md:  992px;
+  --mz-breakpoint-lg:  1200px;
+  --mz-breakpoint-xl:  1400px;
+}

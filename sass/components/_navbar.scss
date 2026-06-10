@@ -1,9 +1,14 @@
+// ==========================================================================
+// Materialize — Navbar
+// Migrated to CSS Custom Properties with SCSS fallbacks.
+// ==========================================================================
+
 nav {
   &.nav-extended {
     height: auto;
 
     .nav-wrapper {
-      min-height: $navbar-height-mobile;
+      min-height: var(--mz-navbar-height-mobile, $navbar-height-mobile);
       height: auto;
     }
 
@@ -13,22 +18,27 @@ nav {
     }
   }
 
-  color: $navbar-font-color;
+  color: var(--mz-navbar-text, $navbar-font-color);
+  background-color: var(--mz-surface-navbar, $primary-color);
   @extend .z-depth-1;
-  background-color: $primary-color;
   width: 100%;
-  height: $navbar-height-mobile;
-  line-height: $navbar-line-height-mobile;
+  height: var(--mz-navbar-height-mobile, $navbar-height-mobile);
+  line-height: var(--mz-navbar-height-mobile, $navbar-line-height-mobile);
+  transition: background-color var(--mz-duration-base) var(--mz-ease),
+              color var(--mz-duration-base) var(--mz-ease);
 
-  a { color: $navbar-font-color; }
+  a {
+    color: var(--mz-navbar-text, $navbar-font-color);
+    transition: background-color var(--mz-duration-fast) var(--mz-ease);
+  }
 
   i,
   [class^="mdi-"], [class*="mdi-"],
   i.material-icons {
     display: block;
     font-size: 24px;
-    height: $navbar-height-mobile;
-    line-height: $navbar-line-height-mobile;
+    height: var(--mz-navbar-height-mobile, $navbar-height-mobile);
+    line-height: var(--mz-navbar-height-mobile, $navbar-line-height-mobile);
   }
 
   .nav-wrapper {
@@ -40,26 +50,24 @@ nav {
     a.sidenav-trigger { display: none; }
   }
 
-
-  // Collapse button
+  // Hamburger trigger
   .sidenav-trigger {
     float: left;
     position: relative;
     z-index: 1;
-    height: $navbar-height-mobile;
+    height: var(--mz-navbar-height-mobile, $navbar-height-mobile);
     margin: 0 18px;
 
     i {
-      height: $navbar-height-mobile;
-      line-height: $navbar-line-height-mobile;
+      height: var(--mz-navbar-height-mobile, $navbar-height-mobile);
+      line-height: var(--mz-navbar-height-mobile, $navbar-line-height-mobile);
     }
   }
 
-
-  // Logo
+  // Brand logo
   .brand-logo {
     position: absolute;
-    color: $navbar-font-color;
+    color: var(--mz-navbar-text, $navbar-font-color);
     display: inline-block;
     font-size: $navbar-brand-font-size;
     padding: 0;
@@ -78,7 +86,7 @@ nav {
         transform: none;
       }
 
-      &.left { left: 0.5rem; }
+      &.left  { left: 0.5rem; }
       &.right {
         right: 0.5rem;
         left: auto;
@@ -98,32 +106,29 @@ nav {
     }
   }
 
-
-  // Title
+  // Extended title
   .nav-title {
     display: inline-block;
     font-size: 32px;
     padding: 28px 0;
   }
 
-
-  // Navbar Links
+  // Nav links
   ul {
     margin: 0;
 
     li {
-      transition: background-color .3s;
+      transition: background-color var(--mz-duration-base, .3s) var(--mz-ease);
       float: left;
       padding: 0;
 
-      &.active {
-        background-color: rgba(0,0,0,.1);
-      }
+      &.active { background-color: rgba(0, 0, 0, .1); }
     }
+
     a {
-      transition: background-color .3s;
+      transition: background-color var(--mz-duration-base, .3s) var(--mz-ease);
       font-size: $navbar-font-size;
-      color: $navbar-font-color;
+      color: var(--mz-navbar-text, $navbar-font-color);
       display: block;
       padding: 0 15px;
       cursor: pointer;
@@ -139,20 +144,14 @@ nav {
         }
       }
 
-      &:hover {
-        background-color: rgba(0,0,0,.1);
-      }
+      &:hover { background-color: rgba(0, 0, 0, .1); }
     }
 
-    &.left {
-      float: left;
-    }
+    &.left { float: left; }
   }
 
-  // Navbar Search Form
-  form {
-    height: 100%;
-  }
+  // Search form
+  form { height: 100%; }
 
   .input-field {
     margin: 0;
@@ -163,46 +162,58 @@ nav {
       font-size: 1.2rem;
       border: none;
       padding-left: 2rem;
+      color: var(--mz-navbar-text);
 
-      &:focus, &[type=text]:valid, &[type=password]:valid,
-      &[type=email]:valid, &[type=url]:valid, &[type=date]:valid {
+      &:focus,
+      &[type=text]:valid,
+      &[type=password]:valid,
+      &[type=email]:valid,
+      &[type=url]:valid,
+      &[type=date]:valid {
         border: none;
         box-shadow: none;
       }
     }
 
     label {
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
 
       i {
-        color: rgba(255,255,255,.7);
-        transition: color .3s;
+        color: rgba(255, 255, 255, .7);
+        transition: color var(--mz-duration-base, .3s) var(--mz-ease);
       }
-      &.active i { color: $navbar-font-color; }
+      &.active i { color: var(--mz-navbar-text, $navbar-font-color); }
     }
   }
 }
 
-// Fixed Navbar
+
+// ---------------------------------------------------------------------------
+// Fixed navbar wrapper
+// ---------------------------------------------------------------------------
+
 .navbar-fixed {
   position: relative;
-  height: $navbar-height-mobile;
-  z-index: 997;
+  height: var(--mz-navbar-height-mobile, $navbar-height-mobile);
+  z-index: var(--mz-z-fixed, 997);
 
-  nav {
-    position: fixed;
-  }
+  nav { position: fixed; }
 }
+
 @media #{$medium-and-up} {
   nav.nav-extended .nav-wrapper {
-    min-height: $navbar-height;
+    min-height: var(--mz-navbar-height, $navbar-height);
   }
-  nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-    height: $navbar-height;
-    line-height: $navbar-line-height;
+
+  nav,
+  nav .nav-wrapper i,
+  nav a.sidenav-trigger,
+  nav a.sidenav-trigger i {
+    height: var(--mz-navbar-height, $navbar-height);
+    line-height: var(--mz-navbar-height, $navbar-line-height);
   }
+
   .navbar-fixed {
-    height: $navbar-height;
+    height: var(--mz-navbar-height, $navbar-height);
   }
 }

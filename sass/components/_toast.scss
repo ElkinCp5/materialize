@@ -1,7 +1,12 @@
+// ==========================================================================
+// Materialize — Toast
+// Migrated to CSS Custom Properties with SCSS fallbacks.
+// ==========================================================================
+
 #toast-container {
-  display:block;
+  display: block;
   position: fixed;
-  z-index: 10000;
+  z-index: var(--mz-z-toast, 10000);
 
   @media #{$small-and-down} {
     min-width: 100%;
@@ -21,33 +26,35 @@
 
 .toast {
   @extend .z-depth-1;
-  border-radius: 2px;
+  border-radius: var(--mz-border-radius-sm, 2px);
   top: 35px;
   width: auto;
   margin-top: 10px;
   position: relative;
-  max-width:100%;
+  max-width: 100%;
   height: auto;
   min-height: $toast-height;
   line-height: 1.5em;
-  background-color: $toast-color;
+  background-color: var(--mz-surface-toast, $toast-color);
   padding: 10px 25px;
   font-size: 1.1rem;
-  font-weight: 300;
-  color: $toast-text-color;
+  font-weight: var(--mz-font-weight-light, 300);
+  color: var(--mz-text-inverse, $toast-text-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: default;
+  transition: background-color var(--mz-duration-base) var(--mz-ease),
+              color var(--mz-duration-base) var(--mz-ease);
 
   .toast-action {
-    color: $toast-action-color;
-    font-weight: 500;
+    color: var(--mz-warning, $toast-action-color);
+    font-weight: var(--mz-font-weight-medium, 500);
     margin-right: -25px;
     margin-left: 3rem;
   }
 
-  &.rounded{
+  &.rounded {
     border-radius: 24px;
   }
 
