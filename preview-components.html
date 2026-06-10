@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materialize Preview</title>
+    <link rel="stylesheet" href="./dist/css/materialize.css" />
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      body {
+        padding: 24px;
+        background: var(--mz-bg-secondary, #fafafa);
+      }
+      .demo-block {
+        padding: 16px;
+        border: 1px solid var(--mz-border-primary, #e0e0e0);
+        border-radius: 8px;
+        background: var(--mz-surface-card, #fff);
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3 class="text-primary">Preview de Componentes</h3>
+
+    <div class="demo-block">
+      <h5>Botones + Waves</h5>
+      <a class="btn waves-effect waves-light">Default</a>
+      <a class="btn waves-effect waves-primary">Primary</a>
+      <a class="btn waves-effect waves-secondary">Secondary</a>
+      <a class="btn waves-effect waves-success">Success</a>
+      <a class="btn waves-effect waves-warning">Warning</a>
+      <a class="btn waves-effect waves-danger">Danger</a>
+      <a class="btn waves-effect waves-info">Info</a>
+    </div>
+
+    <div class="demo-block grid grid-cols-1 grid-md-cols-3 grid-gap-3">
+      <div class="card shadow-sm">
+        <div class="card-content">
+          <span class="card-title">Card 1</span>
+          <p class="text-muted">Utilidades de spacing, color y sombra.</p>
+        </div>
+      </div>
+      <div class="card shadow-md fx-lift-hover">
+        <div class="card-content">
+          <span class="card-title">Card 2</span>
+          <p class="opacity-75">Hover interactivo y animaciones.</p>
+        </div>
+      </div>
+      <div class="card shadow-lg">
+        <div class="card-content">
+          <span class="card-title">Card 3</span>
+          <p class="anim-reveal-left">Animación genérica reusable.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <h5>Utilidades de texto y spacing</h5>
+      <p class="m0 p3 bg-light text-center fs-lg fw-bold rounded">
+        Bloque con <code>m0 p3 bg-light text-center fs-lg fw-bold rounded</code>
+      </p>
+      <p class="text-sm-center text-md-end">
+        Este texto cambia alineación por breakpoint.
+      </p>
+    </div>
+
+    <div class="demo-block grid grid-cols-2 grid-md-cols-4 grid-gap-2">
+      <div class="p2 bg-primary text-white rounded">bg-primary</div>
+      <div class="p2 bg-secondary text-white rounded">bg-secondary</div>
+      <div class="p2 bg-success text-white rounded">bg-success</div>
+      <div class="p2 bg-info text-white rounded">bg-info</div>
+    </div>
+
+    <div class="demo-block">
+      <h5>Animaciones</h5>
+      <span class="chip animate-fade-in">fade-in</span>
+      <span class="chip animate-slide-in">slide-in</span>
+      <span class="chip animate-bounce">bounce</span>
+      <span class="chip animate-pulse">pulse</span>
+      <span class="chip animate-rotate">rotate</span>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="./dist/materialize.js"></script>
+  </body>
+</html>
