@@ -1,0 +1,51 @@
+// Background color utilities
+.bg-primary {
+  background-color: var(--mz-primary);
+  transition: background-color var(--mz-duration-base) var(--mz-ease);
+  &:hover { background-color: var(--mz-primary-dark); }
+}
+
+.bg-secondary {
+  background-color: var(--mz-secondary);
+  transition: background-color var(--mz-duration-base) var(--mz-ease);
+  &:hover { background-color: var(--mz-secondary-dark); }
+}
+
+.bg-success {
+  background-color: var(--mz-success);
+  transition: background-color var(--mz-duration-base) var(--mz-ease);
+  &:hover { background-color: var(--mz-success-dark); }
+}
+
+.bg-warning {
+  background-color: var(--mz-warning);
+  transition: background-color var(--mz-duration-base) var(--mz-ease);
+  &:hover { background-color: var(--mz-warning-dark); }
+}
+
+.bg-danger {
+  background-color: var(--mz-danger);
+  transition: background-color var(--mz-duration-base) var(--mz-ease);
+  &:hover { background-color: var(--mz-danger-dark); }
+}
+
+.bg-info {
+  background-color: var(--mz-info);
+  transition: background-color var(--mz-duration-base) var(--mz-ease);
+  &:hover { background-color: var(--mz-info-dark); }
+}
+
+.bg-light {
+  background-color: var(--mz-gray-100);
+  transition: background-color var(--mz-duration-base) var(--mz-ease);
+  &:hover { background-color: var(--mz-gray-200); }
+}
+
+.bg-dark {
+  background-color: var(--mz-gray-900);
+  transition: background-color var(--mz-duration-base) var(--mz-ease);
+  &:hover { background-color: var(--mz-gray-800); }
+}
+
+.bg-white { background-color: var(--mz-color-white); }
+.bg-transparent { background-color: transparent; }

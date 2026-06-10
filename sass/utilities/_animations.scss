@@ -1,0 +1,230 @@
+// Animation utilities
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scale {
+  from { transform: scale(0.9); }
+  to { transform: scale(1); }
+}
+
+.animate-fade-in { animation: fadeIn var(--mz-duration-base) var(--mz-ease); }
+.animate-fade-out { animation: fadeOut var(--mz-duration-base) var(--mz-ease); }
+.animate-slide-in { animation: slideIn var(--mz-duration-base) var(--mz-ease); }
+.animate-slide-in-left { animation: slideInLeft var(--mz-duration-base) var(--mz-ease); }
+.animate-slide-in-right { animation: slideInRight var(--mz-duration-base) var(--mz-ease); }
+.animate-slide-down { animation: slideDown var(--mz-duration-base) var(--mz-ease); }
+.animate-bounce { animation: bounce 1s var(--mz-ease) infinite; }
+.animate-pulse { animation: pulse 2s var(--mz-ease) infinite; }
+.animate-rotate { animation: rotate 2s linear infinite; }
+.animate-scale { animation: scale var(--mz-duration-base) var(--mz-ease); }
+
+.animate-scale-hover {
+  transition: transform var(--mz-duration-base) var(--mz-ease);
+  &:hover { transform: scale(1.05); }
+}
+
+.animate-shadow-hover {
+  transition: box-shadow var(--mz-duration-base) var(--mz-ease),
+              transform var(--mz-duration-base) var(--mz-ease);
+  &:hover {
+    box-shadow: var(--mz-shadow-lg);
+    transform: translateY(-2px);
+  }
+}
+
+.animate-color-hover {
+  transition: background-color var(--mz-duration-base) var(--mz-ease),
+              color var(--mz-duration-base) var(--mz-ease);
+  &:hover {
+    background-color: var(--mz-primary-dark);
+    color: var(--mz-color-white);
+  }
+}
+
+.animate-fade-hover {
+  transition: opacity var(--mz-duration-base) var(--mz-ease);
+  &:hover { opacity: 0.75; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.5); opacity: 0; }
+}
+
+@keyframes flipInX {
+  from { transform: perspective(400px) rotateX(90deg); opacity: 0; }
+  to { transform: perspective(400px) rotateX(0deg); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-zoom-in { animation: zoomIn var(--mz-duration-base) var(--mz-ease); }
+.animate-zoom-out { animation: zoomOut var(--mz-duration-base) var(--mz-ease); }
+.animate-flip-x { animation: flipInX var(--mz-duration-base) var(--mz-ease); }
+.animate-shake { animation: shake var(--mz-duration-fast) ease-in-out; }
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.animate-pop-in {
+  animation: 
+    zoomIn var(--mz-duration-base) var(--mz-ease) forwards,
+    slideIn var(--mz-duration-base) var(--mz-ease) forwards;
+}
+
+.anim-reveal-left {
+  animation: slideInLeft var(--mz-duration-base) var(--mz-ease) forwards;
+  transform-origin: left center;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.fx-lift-hover {
+  transition: 
+    transform var(--mz-duration-base) var(--mz-ease),
+    box-shadow var(--mz-duration-base) var(--mz-ease),
+    background-color var(--mz-duration-base) var(--mz-ease);
+
+  &:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: var(--mz-shadow-xl);
+    background-color: var(--mz-bg-secondary);
+  }
+}
+
+.fx-interactive {
+  transition: transform var(--mz-duration-fast) var(--mz-ease),
+              box-shadow var(--mz-duration-fast) var(--mz-ease);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--mz-shadow-md);
+    animation: pulse 1.5s var(--mz-ease) infinite;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Generic helpers to compose interactions on any element.
+.fx-scale-hover {
+  transition: transform var(--mz-duration-base) var(--mz-ease);
+  &:hover { transform: scale(1.05); }
+}
+
+.fx-fade-hover {
+  transition: opacity var(--mz-duration-base) var(--mz-ease);
+  &:hover { opacity: 0.75; }
+}
+
+.fx-shadow-hover {
+  transition: box-shadow var(--mz-duration-base) var(--mz-ease);
+  &:hover { box-shadow: var(--mz-shadow-lg); }
+}
+
+.fx-tint-hover {
+  transition: background-color var(--mz-duration-base) var(--mz-ease),
+              color var(--mz-duration-base) var(--mz-ease);
+  &:hover {
+    background-color: var(--mz-primary-dark);
+    color: var(--mz-color-white);
+  }
+}
+
+// Legacy aliases (non-breaking migration path).
+.animate-reveal-left { @extend .anim-reveal-left; }
+.animate-card-hover { @extend .fx-lift-hover; }
+.animate-btn-interactive { @extend .fx-interactive; }
+
+.anim-delay-100 { animation-delay: 100ms; }
+.anim-delay-200 { animation-delay: 200ms; }
+.anim-delay-300 { animation-delay: 300ms; }
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }

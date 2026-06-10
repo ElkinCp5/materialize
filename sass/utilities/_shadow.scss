@@ -1,0 +1,29 @@
+// Shadow utilities
+.shadow-none { box-shadow: none; }
+.shadow-sm { box-shadow: var(--mz-shadow-sm); }
+.shadow-md { box-shadow: var(--mz-shadow-md); }
+.shadow-lg { box-shadow: var(--mz-shadow-lg); }
+.shadow-xl { box-shadow: var(--mz-shadow-xl); }
+
+.shadow-sm-hover {
+  box-shadow: var(--mz-shadow-sm);
+  transition: box-shadow var(--mz-duration-base) var(--mz-ease);
+
+  &:hover { box-shadow: var(--mz-shadow-md); }
+}
+
+.shadow-md-hover {
+  box-shadow: var(--mz-shadow-md);
+  transition: box-shadow var(--mz-duration-base) var(--mz-ease);
+
+  &:hover { box-shadow: var(--mz-shadow-lg); }
+}
+
+.shadow-lg-hover {
+  box-shadow: var(--mz-shadow-lg);
+  transition: box-shadow var(--mz-duration-base) var(--mz-ease);
+
+  &:hover { box-shadow: var(--mz-shadow-xl); }
+}
+
+.shadow-inner { box-shadow: var(--mz-shadow-inner); }

@@ -1,0 +1,217 @@
+// Grid utilities
+
+// --- Display ---
+.grid { display: grid; }
+.inline-grid { display: inline-grid; }
+
+// --- grid-auto-flow ---
+.grid-flow-row { grid-auto-flow: row; }
+.grid-flow-row-dense { grid-auto-flow: row dense; }
+.grid-flow-column { grid-auto-flow: column; }
+.grid-flow-column-dense { grid-auto-flow: column dense; }
+
+// --- grid-template-columns ---
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+.grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
+.grid-cols-12 { grid-template-columns: repeat(12, 1fr); }
+.grid-cols-none { grid-template-columns: none; }
+
+// --- grid-template-rows ---
+.grid-rows-1 { grid-template-rows: repeat(1, 1fr); }
+.grid-rows-2 { grid-template-rows: repeat(2, 1fr); }
+.grid-rows-3 { grid-template-rows: repeat(3, 1fr); }
+.grid-rows-4 { grid-template-rows: repeat(4, 1fr); }
+.grid-rows-5 { grid-template-rows: repeat(5, 1fr); }
+.grid-rows-6 { grid-template-rows: repeat(6, 1fr); }
+.grid-rows-none { grid-template-rows: none; }
+
+// --- grid-column (span) ---
+.col-auto { grid-column: auto; }
+.col-span-1 { grid-column: span 1 / span 1; }
+.col-span-2 { grid-column: span 2 / span 2; }
+.col-span-3 { grid-column: span 3 / span 3; }
+.col-span-4 { grid-column: span 4 / span 4; }
+.col-span-5 { grid-column: span 5 / span 5; }
+.col-span-6 { grid-column: span 6 / span 6; }
+.col-span-12 { grid-column: span 12 / span 12; }
+.col-span-full { grid-column: 1 / -1; }
+
+// --- grid-row (span) ---
+.row-auto { grid-row: auto; }
+.row-span-1 { grid-row: span 1 / span 1; }
+.row-span-2 { grid-row: span 2 / span 2; }
+.row-span-3 { grid-row: span 3 / span 3; }
+.row-span-4 { grid-row: span 4 / span 4; }
+.row-span-5 { grid-row: span 5 / span 5; }
+.row-span-6 { grid-row: span 6 / span 6; }
+.row-span-full { grid-row: 1 / -1; }
+
+// --- justify-items ---
+.grid-justify-items-start { justify-items: start; }
+.grid-justify-items-end { justify-items: end; }
+.grid-justify-items-center { justify-items: center; }
+.grid-justify-items-stretch { justify-items: stretch; }
+
+// --- justify-content ---
+.grid-justify-content-start { justify-content: start; }
+.grid-justify-content-end { justify-content: end; }
+.grid-justify-content-center { justify-content: center; }
+.grid-justify-content-between { justify-content: space-between; }
+.grid-justify-content-around { justify-content: space-around; }
+.grid-justify-content-evenly { justify-content: space-evenly; }
+.grid-justify-content-stretch { justify-content: stretch; }
+
+// --- justify-self ---
+.grid-justify-self-auto { justify-self: auto; }
+.grid-justify-self-start { justify-self: start; }
+.grid-justify-self-end { justify-self: end; }
+.grid-justify-self-center { justify-self: center; }
+.grid-justify-self-stretch { justify-self: stretch; }
+
+// --- align-items ---
+.grid-align-items-start { align-items: start; }
+.grid-align-items-end { align-items: end; }
+.grid-align-items-center { align-items: center; }
+.grid-align-items-baseline { align-items: baseline; }
+.grid-align-items-stretch { align-items: stretch; }
+
+// --- align-content ---
+.grid-align-content-start { align-content: start; }
+.grid-align-content-end { align-content: end; }
+.grid-align-content-center { align-content: center; }
+.grid-align-content-between { align-content: space-between; }
+.grid-align-content-around { align-content: space-around; }
+.grid-align-content-stretch { align-content: stretch; }
+
+// --- align-self ---
+.grid-align-self-auto { align-self: auto; }
+.grid-align-self-start { align-self: start; }
+.grid-align-self-end { align-self: end; }
+.grid-align-self-center { align-self: center; }
+.grid-align-self-baseline { align-self: baseline; }
+.grid-align-self-stretch { align-self: stretch; }
+
+// --- place-items (shorthand align-items + justify-items) ---
+.grid-place-items-start { place-items: start; }
+.grid-place-items-end { place-items: end; }
+.grid-place-items-center { place-items: center; }
+.grid-place-items-stretch { place-items: stretch; }
+
+// --- place-content (shorthand align-content + justify-content) ---
+.grid-place-content-start { place-content: start; }
+.grid-place-content-end { place-content: end; }
+.grid-place-content-center { place-content: center; }
+.grid-place-content-between { place-content: space-between; }
+.grid-place-content-around { place-content: space-around; }
+.grid-place-content-stretch { place-content: stretch; }
+
+// --- gap ---
+.grid-gap-0 { gap: 0; }
+.grid-gap-1 { gap: var(--mz-spacing-xs); }
+.grid-gap-2 { gap: var(--mz-spacing-sm); }
+.grid-gap-3 { gap: var(--mz-spacing-md); }
+.grid-gap-4 { gap: var(--mz-spacing-lg); }
+.grid-gap-5 { gap: var(--mz-spacing-xl); }
+
+.grid-column-gap-0 { column-gap: 0; }
+.grid-column-gap-1 { column-gap: var(--mz-spacing-xs); }
+.grid-column-gap-2 { column-gap: var(--mz-spacing-sm); }
+.grid-column-gap-3 { column-gap: var(--mz-spacing-md); }
+.grid-column-gap-4 { column-gap: var(--mz-spacing-lg); }
+.grid-column-gap-5 { column-gap: var(--mz-spacing-xl); }
+
+.grid-row-gap-0 { row-gap: 0; }
+.grid-row-gap-1 { row-gap: var(--mz-spacing-xs); }
+.grid-row-gap-2 { row-gap: var(--mz-spacing-sm); }
+.grid-row-gap-3 { row-gap: var(--mz-spacing-md); }
+.grid-row-gap-4 { row-gap: var(--mz-spacing-lg); }
+.grid-row-gap-5 { row-gap: var(--mz-spacing-xl); }
+
+// --- Responsive: sm (min-width: 600px) ---
+@media (min-width: 600px) {
+  .grid-sm { display: grid; }
+  .grid-flow-sm-row { grid-auto-flow: row; }
+  .grid-flow-sm-column { grid-auto-flow: column; }
+  .grid-sm-cols-1 { grid-template-columns: repeat(1, 1fr); }
+  .grid-sm-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-sm-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-sm-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-sm-cols-6 { grid-template-columns: repeat(6, 1fr); }
+  .col-sm-span-1 { grid-column: span 1 / span 1; }
+  .col-sm-span-2 { grid-column: span 2 / span 2; }
+  .col-sm-span-3 { grid-column: span 3 / span 3; }
+  .col-sm-span-4 { grid-column: span 4 / span 4; }
+  .col-sm-span-full { grid-column: 1 / -1; }
+  .grid-justify-items-sm-start { justify-items: start; }
+  .grid-justify-items-sm-center { justify-items: center; }
+  .grid-justify-items-sm-end { justify-items: end; }
+  .grid-justify-content-sm-start { justify-content: start; }
+  .grid-justify-content-sm-center { justify-content: center; }
+  .grid-justify-content-sm-end { justify-content: end; }
+  .grid-justify-content-sm-between { justify-content: space-between; }
+  .grid-align-items-sm-start { align-items: start; }
+  .grid-align-items-sm-center { align-items: center; }
+  .grid-align-items-sm-end { align-items: end; }
+}
+
+// --- Responsive: md (min-width: 992px) ---
+@media (min-width: 992px) {
+  .grid-md { display: grid; }
+  .grid-flow-md-row { grid-auto-flow: row; }
+  .grid-flow-md-column { grid-auto-flow: column; }
+  .grid-md-cols-1 { grid-template-columns: repeat(1, 1fr); }
+  .grid-md-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-md-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-md-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-md-cols-6 { grid-template-columns: repeat(6, 1fr); }
+  .grid-md-cols-12 { grid-template-columns: repeat(12, 1fr); }
+  .col-md-span-1 { grid-column: span 1 / span 1; }
+  .col-md-span-2 { grid-column: span 2 / span 2; }
+  .col-md-span-3 { grid-column: span 3 / span 3; }
+  .col-md-span-4 { grid-column: span 4 / span 4; }
+  .col-md-span-6 { grid-column: span 6 / span 6; }
+  .col-md-span-full { grid-column: 1 / -1; }
+  .grid-justify-items-md-start { justify-items: start; }
+  .grid-justify-items-md-center { justify-items: center; }
+  .grid-justify-items-md-end { justify-items: end; }
+  .grid-justify-content-md-start { justify-content: start; }
+  .grid-justify-content-md-center { justify-content: center; }
+  .grid-justify-content-md-end { justify-content: end; }
+  .grid-justify-content-md-between { justify-content: space-between; }
+  .grid-align-items-md-start { align-items: start; }
+  .grid-align-items-md-center { align-items: center; }
+  .grid-align-items-md-end { align-items: end; }
+}
+
+// --- Responsive: lg (min-width: 1200px) ---
+@media (min-width: 1200px) {
+  .grid-lg { display: grid; }
+  .grid-flow-lg-row { grid-auto-flow: row; }
+  .grid-flow-lg-column { grid-auto-flow: column; }
+  .grid-lg-cols-1 { grid-template-columns: repeat(1, 1fr); }
+  .grid-lg-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-lg-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-lg-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-lg-cols-6 { grid-template-columns: repeat(6, 1fr); }
+  .grid-lg-cols-12 { grid-template-columns: repeat(12, 1fr); }
+  .col-lg-span-1 { grid-column: span 1 / span 1; }
+  .col-lg-span-2 { grid-column: span 2 / span 2; }
+  .col-lg-span-3 { grid-column: span 3 / span 3; }
+  .col-lg-span-4 { grid-column: span 4 / span 4; }
+  .col-lg-span-6 { grid-column: span 6 / span 6; }
+  .col-lg-span-full { grid-column: 1 / -1; }
+  .grid-justify-items-lg-start { justify-items: start; }
+  .grid-justify-items-lg-center { justify-items: center; }
+  .grid-justify-items-lg-end { justify-items: end; }
+  .grid-justify-content-lg-start { justify-content: start; }
+  .grid-justify-content-lg-center { justify-content: center; }
+  .grid-justify-content-lg-end { justify-content: end; }
+  .grid-justify-content-lg-between { justify-content: space-between; }
+  .grid-align-items-lg-start { align-items: start; }
+  .grid-align-items-lg-center { align-items: center; }
+  .grid-align-items-lg-end { align-items: end; }
+}

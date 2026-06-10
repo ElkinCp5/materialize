@@ -1,0 +1,23 @@
+// Transition utilities
+.transition-none { transition: none; }
+
+.transition-all { transition: all var(--mz-duration-base) var(--mz-ease); }
+.transition-fade { transition: opacity var(--mz-duration-base) var(--mz-ease); }
+.transition-transform { transition: transform var(--mz-duration-base) var(--mz-ease); }
+
+.transition-colors {
+  transition: background-color var(--mz-duration-base) var(--mz-ease),
+              color var(--mz-duration-base) var(--mz-ease),
+              border-color var(--mz-duration-base) var(--mz-ease);
+}
+
+.transition-shadow { transition: box-shadow var(--mz-duration-base) var(--mz-ease); }
+
+.transition-fast { transition: all var(--mz-duration-fast) var(--mz-ease); }
+.transition-normal { transition: all var(--mz-duration-base) var(--mz-ease); }
+.transition-slow { transition: all var(--mz-duration-slow) var(--mz-ease); }
+
+.transition-ease-in { transition: all var(--mz-duration-base) var(--mz-ease-in); }
+.transition-ease-out { transition: all var(--mz-duration-base) var(--mz-ease-out); }
+.transition-ease-in-out { transition: all var(--mz-duration-base) var(--mz-ease-in-out); }
+.transition-linear { transition: all var(--mz-duration-base) var(--mz-ease-linear); }

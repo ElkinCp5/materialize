@@ -1,0 +1,71 @@
+// Spacing utilities
+$mz-space-scale: (
+  0: 0,
+  1: var(--mz-spacing-xs),
+  2: var(--mz-spacing-sm),
+  3: var(--mz-spacing-md),
+  4: var(--mz-spacing-lg),
+  5: var(--mz-spacing-xl)
+);
+
+@each $key, $value in $mz-space-scale {
+  .m#{$key} { margin: $value; }
+  .mt#{$key} { margin-top: $value; }
+  .mb#{$key} { margin-bottom: $value; }
+  .ml#{$key} { margin-left: $value; }
+  .mr#{$key} { margin-right: $value; }
+  .mx#{$key} { margin-left: $value; margin-right: $value; }
+  .my#{$key} { margin-top: $value; margin-bottom: $value; }
+
+  .p#{$key} { padding: $value; }
+  .pt#{$key} { padding-top: $value; }
+  .pb#{$key} { padding-bottom: $value; }
+  .pl#{$key} { padding-left: $value; }
+  .pr#{$key} { padding-right: $value; }
+  .px#{$key} { padding-left: $value; padding-right: $value; }
+  .py#{$key} { padding-top: $value; padding-bottom: $value; }
+}
+
+.m-auto { margin: auto; }
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.my-auto { margin-top: auto; margin-bottom: auto; }
+
+$mz-breakpoints: (
+  sm: 600px,
+  md: 992px,
+  lg: 1200px
+);
+
+@each $bp, $min in $mz-breakpoints {
+  @media (min-width: $min) {
+    @each $key, $value in $mz-space-scale {
+      .m-#{$bp}-#{$key} { margin: $value; }
+      .mt-#{$bp}-#{$key} { margin-top: $value; }
+      .mb-#{$bp}-#{$key} { margin-bottom: $value; }
+      .ml-#{$bp}-#{$key} { margin-left: $value; }
+      .mr-#{$bp}-#{$key} { margin-right: $value; }
+      .mx-#{$bp}-#{$key} { margin-left: $value; margin-right: $value; }
+      .my-#{$bp}-#{$key} { margin-top: $value; margin-bottom: $value; }
+
+      .p-#{$bp}-#{$key} { padding: $value; }
+      .pt-#{$bp}-#{$key} { padding-top: $value; }
+      .pb-#{$bp}-#{$key} { padding-bottom: $value; }
+      .pl-#{$bp}-#{$key} { padding-left: $value; }
+      .pr-#{$bp}-#{$key} { padding-right: $value; }
+      .px-#{$bp}-#{$key} { padding-left: $value; padding-right: $value; }
+      .py-#{$bp}-#{$key} { padding-top: $value; padding-bottom: $value; }
+    }
+
+    .m-#{$bp}-auto { margin: auto; }
+    .mt-#{$bp}-auto { margin-top: auto; }
+    .mb-#{$bp}-auto { margin-bottom: auto; }
+    .ml-#{$bp}-auto { margin-left: auto; }
+    .mr-#{$bp}-auto { margin-right: auto; }
+    .mx-#{$bp}-auto { margin-left: auto; margin-right: auto; }
+    .my-#{$bp}-auto { margin-top: auto; margin-bottom: auto; }
+  }
+}

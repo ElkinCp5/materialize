@@ -29,34 +29,48 @@
     margin-left:-10px;
     opacity: 0;
 
-    background: rgba(0,0,0,0.2);
+    background: rgba(color("shades", "black"), 0.2);
     transition: all 0.7s ease-out;
     transition-property: transform, opacity;
     transform: scale(0);
     pointer-events: none;
   }
 
-  // Waves Colors
-  &.waves-light .waves-ripple {
-    background-color: rgba(255, 255, 255, 0.45);
-  }
-  &.waves-red .waves-ripple {
-    background-color: rgba(244, 67, 54, .70);
-  }
-  &.waves-yellow .waves-ripple {
-    background-color: rgba(255, 235, 59, .70);
-  }
-  &.waves-orange .waves-ripple {
-    background-color: rgba(255, 152, 0, .70);
-  }
-  &.waves-purple .waves-ripple {
-    background-color: rgba(156, 39, 176, 0.70);
-  }
-  &.waves-green .waves-ripple {
-    background-color: rgba(76, 175, 80, 0.70);
-  }
-  &.waves-teal .waves-ripple {
-    background-color: rgba(0, 150, 136, 0.70);
+  // Waves colors (expanded + token based)
+  $waves-ripple-colors: (
+    "light": rgba(color("shades", "white"), 0.45),
+    "dark": rgba(color("shades", "black"), 0.35),
+    "primary": rgba($primary-color, 0.45),
+    "secondary": rgba($secondary-color, 0.45),
+    "danger": rgba(color("red", "base"), 0.7),
+    "warning": rgba(color("amber", "base"), 0.7),
+    "success": rgba(color("green", "base"), 0.7),
+    "info": rgba(color("blue", "base"), 0.7),
+    "red": rgba(color("red", "base"), 0.7),
+    "pink": rgba(color("pink", "base"), 0.7),
+    "purple": rgba(color("purple", "base"), 0.7),
+    "deep-purple": rgba(color("deep-purple", "base"), 0.7),
+    "indigo": rgba(color("indigo", "base"), 0.7),
+    "blue": rgba(color("blue", "base"), 0.7),
+    "light-blue": rgba(color("light-blue", "base"), 0.7),
+    "cyan": rgba(color("cyan", "base"), 0.7),
+    "teal": rgba(color("teal", "base"), 0.7),
+    "green": rgba(color("green", "base"), 0.7),
+    "light-green": rgba(color("light-green", "base"), 0.7),
+    "lime": rgba(color("lime", "base"), 0.7),
+    "yellow": rgba(color("yellow", "base"), 0.7),
+    "amber": rgba(color("amber", "base"), 0.7),
+    "orange": rgba(color("orange", "base"), 0.7),
+    "deep-orange": rgba(color("deep-orange", "base"), 0.7),
+    "brown": rgba(color("brown", "base"), 0.7),
+    "grey": rgba(color("grey", "base"), 0.7),
+    "blue-grey": rgba(color("blue-grey", "base"), 0.7)
+  );
+
+  @each $name, $value in $waves-ripple-colors {
+    &.waves-#{$name} .waves-ripple {
+      background-color: $value;
+    }
   }
 
   // Style input button bug.
