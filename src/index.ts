@@ -10,9 +10,9 @@
 // ====================================================================
 
 // Components
-export { Modal, Sidenav, Dropdown } from "./components";
+export { Modal, Sidenav, Dropdown, FloatingActionButton, Collapsible, CharacterCounter, Tooltip, Toast, Tabs, Materialbox, ScrollSpy, Autocomplete, Chips, FormSelect, Carousel, Parallax, Pushpin, TapTarget, Slider } from "./components";
 // Types
-export type { DropdownOptions, ModalOptions, ToastOptions } from "./types";
+export type { DropdownOptions, ModalOptions, ToastOptions, FloatingActionButtonOptions, CollapsibleOptions, CharacterCounterOptions, TooltipOptions, TabsOptions, MaterialboxOptions, ScrollSpyOptions, AutocompleteOptions, ChipsOptions, FormSelectOptions, CarouselOptions, ParallaxOptions, PushpinOptions, TapTargetOptions, SliderOptions } from "./types";
 // Utilities
 export { bounce, fadeIn, slideIn } from "./utilities/animations";
 export { debounce, throttle } from "./utilities/helpers";

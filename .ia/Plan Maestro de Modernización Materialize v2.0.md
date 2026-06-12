@@ -10,16 +10,16 @@ Materialize CSS es un framework de UI basado en Material Design de Google, desar
 
 ### **1.2 Métricas de Impacto y Viabilidad**
 
-| Dimensión | Estado de Materialize v1 | Meta Objetivo en Materialize v2.0 |
-| :---- | :---- | :---- |
-| **Dependencias Core** | jQuery (Dependencia explícita y forzada) | Vanilla TypeScript puro (0% dependencias) |
-| **Personalización** | Compilación de SASS manual (Variables hardcodeadas) | CSS Variables interactivas (+100 propiedades en *runtime*) |
-| **Soporte de Temas** | Inexistente (Fuerza manual de estilos) | Modo Oscuro automático nativo e hilos de renderizado reactivos |
-| **Cumplimiento WCAG** | Deficiente (Incompatible con lectores de pantalla) | Certificación WCAG 2.1 AA completa |
-| **Ecosistema JS** | Grunt, Babel 6, Jasmine | Vite, TypeScript, Vitest, Playwright, Biome |
-| **Vulnerabilidades** | 45 identificadas (8 Críticas, 12 Altas, 15 Medias, 10 Bajas) | 0 vulnerabilidades conocidas (Clean Audit) |
-| **Lighthouse Score** | Promedio de 70 (Falta de optimización y peso excesivo) | Promedio de ![][image1] en performance, accesibilidad y SEO |
-| **Peso del Bundle (gzip)** | CSS compilado: \~50KB | JS compilado: \~25KB | CSS optimizado: \< 30KB | JS optimizado: \< 15KB |
+| Dimensión                  | Estado de Materialize v1                                     | Meta Objetivo en Materialize v2.0                              |
+| :------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------- |
+| **Dependencias Core**      | jQuery (Dependencia explícita y forzada)                     | Vanilla TypeScript puro (0% dependencias)                      |
+| **Personalización**        | Compilación de SASS manual (Variables hardcodeadas)          | CSS Variables interactivas (+100 propiedades en *runtime*)     |
+| **Soporte de Temas**       | Inexistente (Fuerza manual de estilos)                       | Modo Oscuro automático nativo e hilos de renderizado reactivos |
+| **Cumplimiento WCAG**      | Deficiente (Incompatible con lectores de pantalla)           | Certificación WCAG 2.1 AA completa                             |
+| **Ecosistema JS**          | Grunt, Babel 6, Jasmine                                      | Vite, TypeScript, Vitest, Playwright, Biome                    |
+| **Vulnerabilidades**       | 45 identificadas (8 Críticas, 12 Altas, 15 Medias, 10 Bajas) | 0 vulnerabilidades conocidas (Clean Audit)                     |
+| **Lighthouse Score**       | Promedio de 70 (Falta de optimización y peso excesivo)       | Promedio de ![][image1] en performance, accesibilidad y SEO    |
+| **Peso del Bundle (gzip)** | CSS compilado: \~50KB                                        | JS compilado: \~25KB                                           | CSS optimizado: \< 30KB | JS optimizado: \< 15KB |
 
 ## **2\. PRINCIPIOS DE ARQUITECTURA Y CAPA DE CONVENCIONES**
 
@@ -513,17 +513,17 @@ El proyecto ha migrado de ESLint a **Biome** debido a los conflictos internos de
 
 La siguiente matriz analiza el alcance funcional y de arquitectura de la modernización frente al estándar actual de la industria:
 
-| Característica Técnica | Materialize v1.0 | Bootstrap v5.3 | Materialize v2.0 EXT |
-| :---- | :---- | :---- | :---- |
-| **Dependencia de jQuery** | Sí (Requerido) | No (Vanilla JS) | **No (TypeScript puro)** |
-| **Soporte de TypeScript** | No (Falta de tipos) | Parcial (Tipos externos) | **Sí (Nativo y compilado)** |
-| **CSS Custom Properties** | No (Inexistente) | Sí (Parcial) | **Sí (+100 variables globales)** |
-| **Soporte de Modo Oscuro** | No | Sí (Por atributos) | **Sí (Automático y reactivo)** |
-| **Componentes de Rejilla** | Grid simple (3 breakpoints) | Grid extendido (6 breakpoints) | **Grid moderno con contenedores CSS** |
-| **Accesibilidad WCAG 2.1** | Deficiente | WCAG 2.1 AA Compliant | **WCAG 2.1 AA Compliant** |
-| **RTL (Right to Left)** | No | Sí | **Sí (Soporte nativo mediante SASS)** |
-| **Componentes Avanzados** | 36 básicos | 50+ avanzados | **50+ (12 nuevos de alta complejidad)** |
-| **Soporte de Build moderno** | Grunt (Desactualizado) | Webpack / Rollup | **Vite \+ esbuild de alta velocidad** |
+| Característica Técnica       | Materialize v1.0            | Bootstrap v5.3                 | Materialize v2.0 EXT                    |
+| :--------------------------- | :-------------------------- | :----------------------------- | :-------------------------------------- |
+| **Dependencia de jQuery**    | Sí (Requerido)              | No (Vanilla JS)                | **No (TypeScript puro)**                |
+| **Soporte de TypeScript**    | No (Falta de tipos)         | Parcial (Tipos externos)       | **Sí (Nativo y compilado)**             |
+| **CSS Custom Properties**    | No (Inexistente)            | Sí (Parcial)                   | **Sí (+100 variables globales)**        |
+| **Soporte de Modo Oscuro**   | No                          | Sí (Por atributos)             | **Sí (Automático y reactivo)**          |
+| **Componentes de Rejilla**   | Grid simple (3 breakpoints) | Grid extendido (6 breakpoints) | **Grid moderno con contenedores CSS**   |
+| **Accesibilidad WCAG 2.1**   | Deficiente                  | WCAG 2.1 AA Compliant          | **WCAG 2.1 AA Compliant**               |
+| **RTL (Right to Left)**      | No                          | Sí                             | **Sí (Soporte nativo mediante SASS)**   |
+| **Componentes Avanzados**    | 36 básicos                  | 50+ avanzados                  | **50+ (12 nuevos de alta complejidad)** |
+| **Soporte de Build moderno** | Grunt (Desactualizado)      | Webpack / Rollup               | **Vite \+ esbuild de alta velocidad**   |
 
 ## **10\. CRONOGRAMA DE IMPLEMENTACIÓN Y ROADMAP**
 

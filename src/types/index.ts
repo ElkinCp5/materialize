@@ -99,7 +99,8 @@ export interface CarouselOptions {
 	shift?: number;
 	dist?: number;
 	duration?: number;
-	onCycleTo?: (current: number) => void;
+	padding?: number;
+	onCycleTo?: (current: HTMLElement, dragged: boolean) => void;
 }
 
 // ====================================================================
@@ -131,6 +132,141 @@ export interface DatepickerOptions {
 	clearButton?: boolean;
 	ok_label?: string;
 	cancel_label?: string;
+}
+
+// ====================================================================
+// FLOATING ACTION BUTTON (FAB)
+// ====================================================================
+
+export interface FloatingActionButtonOptions {
+	direction?: 'top' | 'right' | 'bottom' | 'left';
+	hoverEnabled?: boolean;
+	toolbarEnabled?: boolean;
+}
+
+// ====================================================================
+// CHARACTER COUNTER
+// ====================================================================
+
+export interface CharacterCounterOptions {}
+
+// ====================================================================
+// TOOLTIP
+// ====================================================================
+
+export interface TooltipOptions {
+	exitDelay?: number;
+	enterDelay?: number;
+	html?: string;
+	margin?: number;
+	inDuration?: number;
+	outDuration?: number;
+	position?: 'top' | 'right' | 'bottom' | 'left';
+	transitionMovement?: number;
+}
+
+// ====================================================================
+// MATERIALBOX
+// ====================================================================
+
+export interface MaterialboxOptions {
+	inDuration?: number;
+	outDuration?: number;
+	onOpenStart?: (el: HTMLElement) => void;
+	onOpenEnd?: (el: HTMLElement) => void;
+	onCloseStart?: (el: HTMLElement) => void;
+	onCloseEnd?: (el: HTMLElement) => void;
+}
+
+// ====================================================================
+// PARALLAX
+// ====================================================================
+
+export interface ParallaxOptions {
+	responsiveThreshold?: number;
+}
+
+// ====================================================================
+// PUSHPIN
+// ====================================================================
+
+export interface PushpinOptions {
+	top?: number;
+	bottom?: number;
+	offset?: number;
+	onPositionChange?: (position: 'pinned' | 'pin-top' | 'pin-bottom') => void;
+}
+
+// ====================================================================
+// SLIDER
+// ====================================================================
+
+export interface SliderOptions {
+	indicators?: boolean;
+	height?: number;
+	duration?: number;
+	interval?: number;
+}
+
+// ====================================================================
+// TAP TARGET
+// ====================================================================
+
+export interface TapTargetOptions {
+	onOpen?: (origin: HTMLElement) => void;
+	onClose?: (origin: HTMLElement) => void;
+}
+
+// ====================================================================
+// FORM SELECT
+// ====================================================================
+
+export interface FormSelectOptions {
+	classes?: string;
+	dropdownOptions?: any; // DropdownOptions
+}
+
+// ====================================================================
+// AUTOCOMPLETE
+// ====================================================================
+
+export interface AutocompleteOptions {
+	data?: Record<string, string | null>;
+	limit?: number;
+	minLength?: number;
+	onAutocomplete?: (text: string) => void;
+	sortFunction?: (a: string, b: string, inputString: string) => number;
+}
+
+// ====================================================================
+// CHIPS
+// ====================================================================
+
+export interface ChipData {
+	tag: string;
+	image?: string;
+}
+
+export interface ChipsOptions {
+	data?: ChipData[];
+	placeholder?: string;
+	secondaryPlaceholder?: string;
+	autocompleteOptions?: any; // AutocompleteOptions
+	limit?: number;
+	onChipAdd?: (element: HTMLElement, chip: HTMLElement) => void;
+	onChipSelect?: (element: HTMLElement, chip: HTMLElement) => void;
+	onChipDelete?: (element: HTMLElement, chip: HTMLElement) => void;
+}
+
+// ====================================================================
+// SCROLLSPY
+// ====================================================================
+
+export interface ScrollSpyOptions {
+	throttle?: number;
+	scrollOffset?: number;
+	activeClass?: string;
+	getActiveElement?: (id: string) => string;
 }
 
 // ====================================================================
