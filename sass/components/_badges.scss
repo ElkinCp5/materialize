@@ -1,23 +1,30 @@
-// Badges
+// ==========================================================================
+// Materialize — Badges
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
+
+@use 'sass:math';
+
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
   margin-left: 14px;
   text-align: center;
-  font-size: 1rem;
+  font-size: var(--mz-font-size-lg, 1rem);
   line-height: $badge-height;
   height: $badge-height;
-  color: color('grey', 'darken-1');
+  color: var(--mz-text-secondary, color('grey', 'darken-1'));
   float: right;
   box-sizing: border-box;
 
   &.new {
-    font-weight: 300;
-    font-size: 0.8rem;
-    color: #fff;
-    background-color: $badge-bg-color;
-    border-radius: 2px;
+    font-weight: var(--mz-font-weight-light, 300);
+    font-size: var(--mz-font-size-sm, 0.8rem);
+    color: var(--mz-text-inverse, #fff);
+    background-color: var(--mz-secondary, $badge-bg-color);
+    border-radius: var(--mz-border-radius-sm, 2px);
   }
+
   &.new:after {
     content: " new";
   }
@@ -27,7 +34,12 @@ span.badge {
   }
 }
 
+// ---------------------------------------------------------------------------
 // Special cases
+// Vendor prefix retained: -webkit-font-smoothing (rendering fix, no
+// standard equivalent for nav-embedded badges).
+// ---------------------------------------------------------------------------
+
 nav ul a span.badge {
   display: inline-block;
   float: none;
@@ -39,13 +51,15 @@ nav ul a span.badge {
 
 // Line height centering
 .collection-item span.badge {
-  margin-top: calc(#{$collection-line-height / 2} - #{$badge-height / 2});
+  margin-top: calc(#{math.div($collection-line-height, 2)} - #{math.div($badge-height, 2)});
 }
+
 .collapsible span.badge {
   margin-left: auto;
 }
+
 .sidenav span.badge {
-  margin-top: calc(#{$sidenav-line-height / 2} - #{$badge-height / 2});
+  margin-top: calc(#{math.div($sidenav-line-height, 2)} - #{math.div($badge-height, 2)});
 }
 
 table span.badge {

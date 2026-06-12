@@ -1,10 +1,15 @@
+// ==========================================================================
+// Materialize — Tooltip
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
+
 .material-tooltip {
-  padding: 10px 8px;
-  font-size: 1rem;
-  z-index: 2000;
-  background-color: transparent;
-  border-radius: 2px;
-  color: #fff;
+  padding: var(--mz-spacing-sm, 8px) 8px;
+  font-size: var(--mz-font-size-base, 1rem);
+  z-index: var(--mz-z-tooltip, 1070);
+  border-radius: var(--mz-border-radius-sm, 2px);
+  background-color: var(--mz-surface-tooltip, #323232);
+  color: var(--mz-tooltip-text, var(--mz-text-inverse, #fff));
   min-height: 36px;
   line-height: 120%;
   opacity: 0;
@@ -16,8 +21,14 @@
   top: 0;
   pointer-events: none;
   visibility: hidden;
-  background-color: #323232;
+  transition:
+    opacity var(--mz-duration-fast, 150ms) var(--mz-ease-out, ease-out),
+    visibility var(--mz-duration-fast, 150ms) var(--mz-ease-out, ease-out);
 }
+
+// ---------------------------------------------------------------------------
+// Backdrop (legacy — kept for JS compatibility, hidden visually)
+// ---------------------------------------------------------------------------
 
 .backdrop {
   position: absolute;
@@ -25,8 +36,8 @@
   height: 7px;
   width: 14px;
   border-radius: 0 0 50% 50%;
-  background-color: #323232;
-  z-index: -1;
+  background-color: var(--mz-surface-tooltip, #323232);
+  z-index: var(--mz-z-negative, -1);
   transform-origin: 50% 0%;
   visibility: hidden;
 }

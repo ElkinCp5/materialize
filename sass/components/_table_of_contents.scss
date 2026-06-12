@@ -1,33 +1,39 @@
-/***************
-    Nav List
-***************/
+// ==========================================================================
+// Materialize — Table of Contents
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
+
 .table-of-contents {
   &.fixed {
-      position: fixed;
-    }
+    position: fixed;
+  }
 
   li {
     padding: 2px 0;
   }
+
   a {
     display: inline-block;
-    font-weight: 300;
-    color: #757575;
+    font-weight: var(--mz-font-weight-light, 300);
+    color: var(--mz-text-secondary, #757575);
     padding-left: 16px;
     height: 1.5rem;
     line-height: 1.5rem;
-    letter-spacing: .4;
-    display: inline-block;
+    letter-spacing: .4px;
+    transition: color var(--mz-duration-base, .3s) var(--mz-ease),
+                padding-left var(--mz-duration-base, .3s) var(--mz-ease),
+                border-left var(--mz-duration-base, .3s) var(--mz-ease);
 
     &:hover {
-      color: lighten(#757575, 20%);
+      color: var(--mz-text-primary); // was lighten(#757575, 20%)
       padding-left: 15px;
-      border-left: 1px solid $primary-color;
+      border-left: var(--mz-border-width, 1px) solid var(--mz-primary, $primary-color);
     }
+
     &.active {
-      font-weight: 500;
+      font-weight: var(--mz-font-weight-medium, 500);
       padding-left: 14px;
-      border-left: 2px solid $primary-color;
+      border-left: var(--mz-border-width-thick, 2px) solid var(--mz-primary, $primary-color);
     }
   }
 }

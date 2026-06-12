@@ -1,3 +1,10 @@
+// ==========================================================================
+// Materialize — Materialbox
+// Migrated to CSS Custom Properties — Materialize v2.0
+// Vendor prefixes retained: -webkit-backface-visibility (Safari rendering
+// fix, no standard replacement), -webkit-font-smoothing (caption rendering).
+// ==========================================================================
+
 .materialboxed {
   &:hover {
     &:not(.active) {
@@ -8,7 +15,7 @@
   display: block;
   cursor: zoom-in;
   position: relative;
-  transition: opacity .4s;
+  transition: opacity var(--mz-duration-slow, .4s) var(--mz-ease);
   -webkit-backface-visibility: hidden;
 
   &.active {
@@ -17,27 +24,27 @@
 }
 
 #materialbox-overlay {
-  position:fixed;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #292929;
-  z-index: 1000;
+  background-color: var(--mz-gray-900, #292929);
+  z-index: var(--mz-z-fixed, 1000);
   will-change: opacity;
 }
 
 .materialbox-caption {
   position: fixed;
   display: none;
-  color: #fff;
+  color: var(--mz-text-inverse, #fff);
   line-height: 50px;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
-  padding: 0% 15%;
+  padding: 0 15%;
   height: 50px;
-  z-index: 1000;
+  z-index: var(--mz-z-fixed, 1000);
   -webkit-font-smoothing: antialiased;
 }

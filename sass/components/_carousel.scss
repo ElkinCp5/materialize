@@ -1,3 +1,8 @@
+// ==========================================================================
+// Materialize — Carousel
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
+
 .carousel {
   &.carousel-slider {
     top: 0;
@@ -12,7 +17,7 @@
       left: 0;
       right: 0;
       bottom: 20px;
-      z-index: 1;
+      z-index: var(--mz-z-base, 1);
     }
 
     .carousel-item {
@@ -24,13 +29,15 @@
       left: 0;
 
       h2 {
-        font-size: 24px;
-        font-weight: 500;
+        font-size: var(--mz-font-size-3xl, 24px);
+        font-weight: var(--mz-font-weight-medium, 500);
         line-height: 32px;
+        color: var(--mz-text-inverse, #fff);
       }
 
       p {
-        font-size: 15px;
+        font-size: var(--mz-font-size-lg, 15px);
+        color: var(--mz-text-inverse, #fff);
       }
     }
   }
@@ -56,6 +63,10 @@
     }
   }
 
+  // -------------------------------------------------------------------------
+  // Indicators
+  // -------------------------------------------------------------------------
+
   .indicators {
     position: absolute;
     text-align: center;
@@ -66,7 +77,7 @@
 
     .indicator-item {
       &.active {
-        background-color: #fff;
+        background-color: var(--mz-color-white, #fff);
       }
 
       display: inline-block;
@@ -75,9 +86,9 @@
       height: 8px;
       width: 8px;
       margin: 24px 4px;
-      background-color: rgba(255,255,255,.5);
+      background-color: rgba(var(--mz-color-white-rgb, 255, 255, 255), .5);
 
-      transition: background-color .3s;
+      transition: background-color var(--mz-duration-base, .3s) var(--mz-ease);
       border-radius: 50%;
     }
   }

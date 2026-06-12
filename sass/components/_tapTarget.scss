@@ -1,10 +1,15 @@
+// ==========================================================================
+// Materialize — Tap Target
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
+
 .tap-target-wrapper {
   width: 800px;
   height: 800px;
   position: fixed;
-  z-index: 1000;
+  z-index: var(--mz-z-fixed, 1000);
   visibility: hidden;
-  transition: visibility 0s .3s;
+  transition: visibility 0s var(--mz-duration-base, .3s);
 }
 
 .tap-target-wrapper.open {
@@ -15,36 +20,37 @@
     transform: scale(1);
     opacity: .95;
     transition:
-      transform .3s cubic-bezier(.42,0,.58,1),
-      opacity .3s cubic-bezier(.42,0,.58,1);
+      transform var(--mz-duration-base, .3s) cubic-bezier(.42, 0, .58, 1),
+      opacity var(--mz-duration-base, .3s) cubic-bezier(.42, 0, .58, 1);
   }
 
   .tap-target-wave::before {
     transform: scale(1);
   }
+
   .tap-target-wave::after {
     visibility: visible;
     animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
     transition:
-      opacity .3s,
-      transform .3s,
+      opacity var(--mz-duration-base, .3s),
+      transform var(--mz-duration-base, .3s),
       visibility 0s 1s;
   }
 }
 
 .tap-target {
   position: absolute;
-  font-size: 1rem;
+  font-size: var(--mz-font-size-lg, 1rem);
   border-radius: 50%;
-  background-color: $primary-color;
-  box-shadow: 0 20px 20px 0 rgba(0,0,0,0.14), 0 10px 50px 0 rgba(0,0,0,0.12), 0 30px 10px -20px rgba(0,0,0,0.2);
+  background-color: var(--mz-primary, $primary-color);
+  box-shadow: var(--mz-shadow-lg);
   width: 100%;
   height: 100%;
   opacity: 0;
   transform: scale(0);
   transition:
-    transform .3s cubic-bezier(.42,0,.58,1),
-    opacity .3s cubic-bezier(.42,0,.58,1);
+    transform var(--mz-duration-base, .3s) cubic-bezier(.42, 0, .58, 1),
+    opacity var(--mz-duration-base, .3s) cubic-bezier(.42, 0, .58, 1);
 }
 
 .tap-target-content {
@@ -61,24 +67,26 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: var(--mz-color-white, #ffffff);
   }
+
   &::before {
     transform: scale(0);
-    transition: transform .3s;
+    transition: transform var(--mz-duration-base, .3s);
   }
+
   &::after {
     visibility: hidden;
     transition:
-      opacity .3s,
-      transform .3s,
+      opacity var(--mz-duration-base, .3s),
+      transform var(--mz-duration-base, .3s),
       visibility 0s;
-    z-index: -1;
+    z-index: var(--mz-z-negative, -1);
   }
 
   position: absolute;
   border-radius: 50%;
-  z-index: 10001;
+  z-index: var(--mz-z-tap-target, 10001);
 }
 
 .tap-target-origin {
@@ -89,9 +97,9 @@
 
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 
-  z-index: 10002;
+  z-index: var(--mz-z-tap-target-origin, 10002);
   position: absolute !important;
 }
 

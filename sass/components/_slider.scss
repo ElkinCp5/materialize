@@ -1,3 +1,8 @@
+// ==========================================================================
+// Materialize — Slider (Photo Slider)
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
+
 .slider {
   position: relative;
   height: 400px;
@@ -18,13 +23,13 @@
     }
 
     ul.indicators {
-      z-index: 2;
+      z-index: var(--mz-z-dropdown, 2);
       bottom: 30px;
     }
   }
 
   .slides {
-    background-color: $slider-bg-color;
+    background-color: var(--mz-gray-500, $slider-bg-color);
     margin: 0;
     height: 400px;
 
@@ -33,7 +38,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 1;
+      z-index: var(--mz-z-base, 1);
       width: 100%;
       height: inherit;
       overflow: hidden;
@@ -46,18 +51,18 @@
       }
 
       .caption {
-        color: #fff;
+        color: var(--mz-text-inverse, #fff);
         position: absolute;
         top: 15%;
         left: 15%;
         width: 70%;
         opacity: 0;
 
-        p { color: $slider-bg-color-light; }
+        p { color: var(--mz-gray-200, $slider-bg-color-light); }
       }
 
       &.active {
-        z-index: 2;
+        z-index: var(--mz-z-dropdown, 2);
       }
     }
   }
@@ -78,13 +83,13 @@
       height: 16px;
       width: 16px;
       margin: 0 12px;
-      background-color: $slider-bg-color-light;
+      background-color: var(--mz-gray-200, $slider-bg-color-light);
 
-      transition: background-color .3s;
+      transition: background-color var(--mz-duration-base, .3s) var(--mz-ease);
       border-radius: 50%;
 
       &.active {
-        background-color: $slider-indicator-color;
+        background-color: var(--mz-success, $slider-indicator-color);
       }
     }
   }

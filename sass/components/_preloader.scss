@@ -8,6 +8,21 @@
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
 
+// ==========================================================================
+// Materialize v2.0 — Migration note
+//
+// Only `border-color` on `.spinner-layer` was tokenized (--mz-secondary).
+// The Google-branded spinner colors (#4285f4, #db4437, #f4b400, #0f9d58)
+// are intentionally NOT tokenized — they represent fixed brand colors
+// for the multi-color spinner variant, independent of theme.
+//
+// All -webkit-* prefixes and @-webkit-keyframes blocks are retained
+// intentionally: this is the canonical Polymer-derived spinner animation,
+// and -webkit-animation/-webkit-transform are required for older
+// Safari/iOS WebView rendering where unprefixed @keyframes silently fail.
+// ==========================================================================
+
+
 /**************************/
 /* STYLES FOR THE SPINNER */
 /**************************/
@@ -63,7 +78,7 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  border-color: $spinner-default-color;
+  border-color: var(--mz-secondary, $spinner-default-color);
 }
 
 .spinner-blue,
