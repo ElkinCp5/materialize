@@ -1,13 +1,20 @@
-
-/*!
- * Waves v0.6.0
- * http://fian.my.id/Waves
- *
- * Copyright 2014 Alfiana E. Sibuea and other contributors
- * Released under the MIT license
- * https://github.com/fians/Waves/blob/master/LICENSE
- */
-
+// ==========================================================================
+// Materialize — Waves Ripple Effect
+// Migrated to CSS Custom Properties — Materialize v2.0
+//
+// Original:
+// Waves v0.6.0 — http://fian.my.id/Waves
+// Copyright 2014 Alfiana E. Sibuea and other contributors
+// Released under the MIT license — https://github.com/fians/Waves/blob/master/LICENSE
+//
+// Changes:
+// - $waves-ripple-colors "primary"/"secondary" now use --mz-*-rgb tokens
+//   instead of $primary-color/$secondary-color, so ripples respond to
+//   dark mode.
+// - -webkit-mask-image removed (unprefixed mask-image has full modern
+//   browser support — Safari 15.4+, all evergreen browsers).
+// - .waves-circle consolidated (was declared twice in v1).
+// ==========================================================================
 
 .waves-effect {
   position: relative;
@@ -17,54 +24,54 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
-  z-index: 1;
-  transition: .3s ease-out;
+  z-index: var(--mz-z-base, 1);
+  transition: var(--mz-duration-base, .3s) var(--mz-ease-out, ease-out);
 
   .waves-ripple {
     position: absolute;
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    margin-top:-10px;
-    margin-left:-10px;
+    margin-top: -10px;
+    margin-left: -10px;
     opacity: 0;
 
-    background: rgba(color("shades", "black"), 0.2);
-    transition: all 0.7s ease-out;
+    background: rgba(var(--mz-color-black-rgb, 0, 0, 0), 0.2);
+    transition: all var(--mz-duration-slow, .7s) var(--mz-ease-out, ease-out);
     transition-property: transform, opacity;
     transform: scale(0);
     pointer-events: none;
   }
 
-  // Waves colors (expanded + token based)
+  // Waves colors (token-based — respond to theme/dark mode)
   $waves-ripple-colors: (
-    "light": rgba(color("shades", "white"), 0.45),
-    "dark": rgba(color("shades", "black"), 0.35),
-    "primary": rgba($primary-color, 0.45),
-    "secondary": rgba($secondary-color, 0.45),
-    "danger": rgba(color("red", "base"), 0.7),
-    "warning": rgba(color("amber", "base"), 0.7),
-    "success": rgba(color("green", "base"), 0.7),
-    "info": rgba(color("blue", "base"), 0.7),
-    "red": rgba(color("red", "base"), 0.7),
-    "pink": rgba(color("pink", "base"), 0.7),
-    "purple": rgba(color("purple", "base"), 0.7),
+    "light":       rgba(var(--mz-color-white-rgb, 255, 255, 255), 0.45),
+    "dark":        rgba(var(--mz-color-black-rgb, 0, 0, 0), 0.35),
+    "primary":     rgba(var(--mz-primary-rgb), 0.45),
+    "secondary":   rgba(var(--mz-secondary-rgb), 0.45),
+    "danger":      rgba(var(--mz-danger-rgb), 0.7),
+    "warning":     rgba(var(--mz-warning-rgb), 0.7),
+    "success":     rgba(var(--mz-success-rgb), 0.7),
+    "info":        rgba(var(--mz-info-rgb), 0.7),
+    "red":         rgba(color("red", "base"), 0.7),
+    "pink":        rgba(color("pink", "base"), 0.7),
+    "purple":      rgba(color("purple", "base"), 0.7),
     "deep-purple": rgba(color("deep-purple", "base"), 0.7),
-    "indigo": rgba(color("indigo", "base"), 0.7),
-    "blue": rgba(color("blue", "base"), 0.7),
-    "light-blue": rgba(color("light-blue", "base"), 0.7),
-    "cyan": rgba(color("cyan", "base"), 0.7),
-    "teal": rgba(color("teal", "base"), 0.7),
-    "green": rgba(color("green", "base"), 0.7),
+    "indigo":      rgba(color("indigo", "base"), 0.7),
+    "blue":        rgba(color("blue", "base"), 0.7),
+    "light-blue":  rgba(color("light-blue", "base"), 0.7),
+    "cyan":        rgba(color("cyan", "base"), 0.7),
+    "teal":        rgba(color("teal", "base"), 0.7),
+    "green":       rgba(color("green", "base"), 0.7),
     "light-green": rgba(color("light-green", "base"), 0.7),
-    "lime": rgba(color("lime", "base"), 0.7),
-    "yellow": rgba(color("yellow", "base"), 0.7),
-    "amber": rgba(color("amber", "base"), 0.7),
-    "orange": rgba(color("orange", "base"), 0.7),
+    "lime":        rgba(color("lime", "base"), 0.7),
+    "yellow":      rgba(color("yellow", "base"), 0.7),
+    "amber":       rgba(color("amber", "base"), 0.7),
+    "orange":      rgba(color("orange", "base"), 0.7),
     "deep-orange": rgba(color("deep-orange", "base"), 0.7),
-    "brown": rgba(color("brown", "base"), 0.7),
-    "grey": rgba(color("grey", "base"), 0.7),
-    "blue-grey": rgba(color("blue-grey", "base"), 0.7)
+    "brown":       rgba(color("brown", "base"), 0.7),
+    "grey":        rgba(color("grey", "base"), 0.7),
+    "blue-grey":   rgba(color("blue-grey", "base"), 0.7)
   );
 
   @each $name, $value in $waves-ripple-colors {
@@ -84,7 +91,7 @@
 
   img {
     position: relative;
-    z-index: -1;
+    z-index: var(--mz-z-negative, -1);
   }
 }
 
@@ -92,9 +99,18 @@
   transition: none #{"!important"};
 }
 
+// ---------------------------------------------------------------------------
+// Circle variant (consolidated — was declared twice in v1)
+// ---------------------------------------------------------------------------
+
 .waves-circle {
   transform: translateZ(0);
-  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+  mask-image: radial-gradient(circle, white 100%, black 100%);
+  text-align: center;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  border-radius: 50%;
 }
 
 .waves-input-wrapper {
@@ -105,17 +121,8 @@
     position: relative;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: var(--mz-z-base, 1);
   }
-}
-
-.waves-circle {
-  text-align: center;
-  width: 2.5em;
-  height: 2.5em;
-  line-height: 2.5em;
-  border-radius: 50%;
-  -webkit-mask-image: none;
 }
 
 .waves-block {
@@ -124,5 +131,5 @@
 
 /* Firefox Bug: link not triggered */
 .waves-effect .waves-ripple {
-  z-index: -1;
+  z-index: var(--mz-z-negative, -1);
 }
