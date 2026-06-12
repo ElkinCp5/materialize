@@ -63,6 +63,25 @@
 }
 
 // --------------------------------------------------------------------------
+// 1b. RGB Triples (for rgba(var(--mz-*-rgb), alpha) usage)
+//
+// Limited to tokens consumed with alpha transparency in components
+// (ripples, focus rings, overlays). Add more only as components need them.
+// --------------------------------------------------------------------------
+
+:root {
+  --mz-primary-rgb:   238, 110, 115; // #ee6e73
+  --mz-secondary-rgb: 38, 166, 154;  // #26a69a
+  --mz-success-rgb:   76, 175, 80;   // #4caf50
+  --mz-warning-rgb:   255, 152, 0;   // #ff9800
+  --mz-danger-rgb:    244, 67, 54;   // #f44336
+  --mz-info-rgb:      33, 150, 243;  // #2196f3
+  --mz-gray-900-rgb:  33, 33, 33;    // #212121
+  --mz-color-black-rgb: 0, 0, 0;
+  --mz-color-white-rgb: 255, 255, 255;
+}
+
+// --------------------------------------------------------------------------
 // 2. Palette — Grayscale
 // --------------------------------------------------------------------------
 
@@ -137,10 +156,12 @@
   --mz-primary:          #f3989b;
   --mz-primary-light:    #ffcccc;
   --mz-primary-dark:     #c62828;
+  --mz-primary-rgb:      243, 152, 155; // #f3989b
 
   --mz-secondary:        #80cbc4;
   --mz-secondary-light:  #b2dfdb;
   --mz-secondary-dark:   #004d40;
+  --mz-secondary-rgb:    128, 203, 196; // #80cbc4
 
   // Grayscale inversion
   --mz-gray-50:   #2a2a2a;
@@ -153,6 +174,7 @@
   --mz-gray-700:  #bdbdbd;
   --mz-gray-800:  #e0e0e0;
   --mz-gray-900:  #f5f5f5;
+  --mz-gray-900-rgb: 245, 245, 245; // #f5f5f5 (inverted in dark)
 
   // Backgrounds
   --mz-bg-primary:    #121212;
@@ -202,10 +224,14 @@
     --mz-primary:          #f3989b;
     --mz-primary-light:    #ffcccc;
     --mz-primary-dark:     #c62828;
+    --mz-primary-rgb:      243, 152, 155; // #f3989b
 
     --mz-secondary:        #80cbc4;
     --mz-secondary-light:  #b2dfdb;
     --mz-secondary-dark:   #004d40;
+    --mz-secondary-rgb:    128, 203, 196; // #80cbc4
+
+    --mz-gray-900-rgb: 245, 245, 245; // #f5f5f5 (inverted gray-900 in dark)
 
     --mz-gray-50:   #2a2a2a;
     --mz-gray-100:  #383838;
@@ -314,6 +340,12 @@
   --mz-font-size-3xl:  24px;
   --mz-font-size-4xl:  28px;
   --mz-font-size-5xl:  32px;
+
+  // Icon sizes
+  --mz-icon-size-sm: 18px;
+  --mz-icon-size:    24px;
+  --mz-icon-size-lg: 36px;
+  --mz-icon-size-xl: 48px;
 
   --mz-font-weight-light:    300;
   --mz-font-weight-normal:   400;
@@ -465,6 +497,11 @@
   --mz-z-popover:      1060;
   --mz-z-tooltip:      1070;
   --mz-z-toast:        1080;
+
+  // Onboarding layer — intentionally outside the normal UI scale.
+  // Tap targets must render above tooltips, toasts, and modals.
+  --mz-z-tap-target:        10000;
+  --mz-z-tap-target-origin: 10001;
 }
 
 // --------------------------------------------------------------------------

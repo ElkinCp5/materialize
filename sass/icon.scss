@@ -1,0 +1,32 @@
+// ==========================================================================
+// Materialize — Material Icons (self-hosted)
+// Migrated to CSS Custom Properties — Materialize v2.0
+//
+// Already self-hosted (no external Google Fonts request) — only
+// modernized for performance (font-display) and theming (--mz-icon-size).
+// ==========================================================================
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./font-icon.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--mz-icon-size, 24px);
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
