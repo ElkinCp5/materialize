@@ -1,7 +1,9 @@
-/* Checkboxes
-   ========================================================================== */
+// ==========================================================================
+// Materialize — Checkboxes
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
 
-/* Remove default checkbox */
+// Remove default checkbox
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
@@ -9,9 +11,8 @@
   pointer-events: none;
 }
 
-// Checkbox Styles
 [type="checkbox"] {
-  // Text Label Style
+  // Text label
   + span:not(.lever) {
     position: relative;
     padding-left: 35px;
@@ -19,11 +20,12 @@
     display: inline-block;
     height: 25px;
     line-height: 25px;
-    font-size: 1rem;
+    font-size: var(--mz-font-size-lg, 1rem);
+    color: var(--mz-text-primary);
     user-select: none;
   }
 
-  /* checkbox aspect */
+  // Checkbox box
   + span:not(.lever):before,
   &:not(.filled-in) + span:not(.lever):after {
     content: '';
@@ -33,10 +35,11 @@
     width: 18px;
     height: 18px;
     z-index: 0;
-    border: 2px solid $radio-empty-color;
+    border: var(--mz-border-width-thick, 2px) solid var(--mz-text-secondary, $radio-empty-color);
     border-radius: 1px;
     margin-top: 3px;
-    transition: .2s;
+    transition: border-color var(--mz-duration-fast, .2s) var(--mz-ease),
+                background-color var(--mz-duration-fast, .2s) var(--mz-ease);
   }
 
   &:not(.filled-in) + span:not(.lever):after {
@@ -46,18 +49,22 @@
 
   &:not(:checked):disabled + span:not(.lever):before {
     border: none;
-    background-color: $input-disabled-color;
+    background-color: var(--mz-text-disabled, $input-disabled-color);
   }
 
-  // Focused styles
+  // Focus ring
   &.tabbed:focus + span:not(.lever):after {
     transform: scale(1);
     border: 0;
     border-radius: 50%;
-    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
-    background-color: rgba(0,0,0,.1);
+    box-shadow: 0 0 0 10px var(--mz-bg-overlay, rgba(0, 0, 0, .1));
+    background-color: var(--mz-bg-overlay, rgba(0, 0, 0, .1));
   }
 }
+
+// ---------------------------------------------------------------------------
+// Checked state
+// ---------------------------------------------------------------------------
 
 [type="checkbox"]:checked {
   + span:not(.lever):before {
@@ -65,22 +72,25 @@
     left: -5px;
     width: 12px;
     height: 22px;
-    border-top: 2px solid transparent;
-    border-left: 2px solid transparent;
-    border-right: $radio-border;
-    border-bottom: $radio-border;
+    border-top: var(--mz-border-width-thick, 2px) solid transparent;
+    border-left: var(--mz-border-width-thick, 2px) solid transparent;
+    border-right: var(--mz-border-width-thick, 2px) solid var(--mz-secondary, $radio-fill-color);
+    border-bottom: var(--mz-border-width-thick, 2px) solid var(--mz-secondary, $radio-fill-color);
     transform: rotate(40deg);
     backface-visibility: hidden;
     transform-origin: 100% 100%;
   }
 
   &:disabled + span:before {
-    border-right: 2px solid $input-disabled-color;
-    border-bottom: 2px solid $input-disabled-color;
+    border-right: var(--mz-border-width-thick, 2px) solid var(--mz-text-disabled, $input-disabled-color);
+    border-bottom: var(--mz-border-width-thick, 2px) solid var(--mz-text-disabled, $input-disabled-color);
   }
 }
 
-/* Indeterminate checkbox */
+// ---------------------------------------------------------------------------
+// Indeterminate state
+// ---------------------------------------------------------------------------
+
 [type="checkbox"]:indeterminate {
   + span:not(.lever):before {
     top: -11px;
@@ -89,23 +99,24 @@
     height: 22px;
     border-top: none;
     border-left: none;
-    border-right: $radio-border;
+    border-right: var(--mz-border-width-thick, 2px) solid var(--mz-secondary, $radio-fill-color);
     border-bottom: none;
     transform: rotate(90deg);
     backface-visibility: hidden;
     transform-origin: 100% 100%;
   }
 
-  // Disabled indeterminate
   &:disabled + span:not(.lever):before {
-    border-right: 2px solid $input-disabled-color;
+    border-right: var(--mz-border-width-thick, 2px) solid var(--mz-text-disabled, $input-disabled-color);
     background-color: transparent;
   }
 }
 
-// Filled in Style
+// ---------------------------------------------------------------------------
+// Filled-in variant
+// ---------------------------------------------------------------------------
+
 [type="checkbox"].filled-in {
-  // General
   + span:not(.lever):after {
     border-radius: 2px;
   }
@@ -115,12 +126,17 @@
     content: '';
     left: 0;
     position: absolute;
-    /* .1s delay is for check animation */
-    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+    transition:
+      border-color var(--mz-duration-base, .25s) var(--mz-ease),
+      background-color var(--mz-duration-base, .25s) var(--mz-ease),
+      width var(--mz-duration-fast, .2s) .1s var(--mz-ease),
+      height var(--mz-duration-fast, .2s) .1s var(--mz-ease),
+      top var(--mz-duration-fast, .2s) .1s var(--mz-ease),
+      left var(--mz-duration-fast, .2s) .1s var(--mz-ease);
     z-index: 1;
   }
 
-  // Unchecked style
+  // Unchecked
   &:not(:checked) + span:not(.lever):before {
     width: 0;
     height: 0;
@@ -135,22 +151,22 @@
     height: 20px;
     width: 20px;
     background-color: transparent;
-    border: 2px solid $radio-empty-color;
-    top: 0px;
+    border: var(--mz-border-width-thick, 2px) solid var(--mz-text-secondary, $radio-empty-color);
+    top: 0;
     z-index: 0;
   }
 
-  // Checked style
+  // Checked
   &:checked {
     + span:not(.lever):before {
       top: 0;
       left: 1px;
       width: 8px;
       height: 13px;
-      border-top: 2px solid transparent;
-      border-left: 2px solid transparent;
-      border-right: 2px solid $input-background;
-      border-bottom: 2px solid $input-background;
+      border-top: var(--mz-border-width-thick, 2px) solid transparent;
+      border-left: var(--mz-border-width-thick, 2px) solid transparent;
+      border-right: var(--mz-border-width-thick, 2px) solid var(--mz-bg-primary, $input-background);
+      border-bottom: var(--mz-border-width-thick, 2px) solid var(--mz-bg-primary, $input-background);
       transform: rotateZ(37deg);
       transform-origin: 100% 100%;
     }
@@ -159,34 +175,34 @@
       top: 0;
       width: 20px;
       height: 20px;
-      border: 2px solid $secondary-color;
-      background-color: $secondary-color;
+      border: var(--mz-border-width-thick, 2px) solid var(--mz-secondary, $secondary-color);
+      background-color: var(--mz-secondary, $secondary-color);
       z-index: 0;
     }
   }
 
-  // Focused styles
+  // Focus ring
   &.tabbed:focus + span:not(.lever):after {
     border-radius: 2px;
-    border-color: $radio-empty-color;
-    background-color: rgba(0,0,0,.1);
+    border-color: var(--mz-text-secondary, $radio-empty-color);
+    background-color: var(--mz-bg-overlay, rgba(0, 0, 0, .1));
   }
 
   &.tabbed:checked:focus + span:not(.lever):after {
     border-radius: 2px;
-    background-color: $secondary-color;
-    border-color: $secondary-color;
+    background-color: var(--mz-secondary, $secondary-color);
+    border-color: var(--mz-secondary, $secondary-color);
   }
 
-  // Disabled style
+  // Disabled
   &:disabled:not(:checked) + span:not(.lever):before {
     background-color: transparent;
-    border: 2px solid transparent;
+    border: var(--mz-border-width-thick, 2px) solid transparent;
   }
 
   &:disabled:not(:checked) + span:not(.lever):after {
     border-color: transparent;
-    background-color: $input-disabled-solid-color;
+    background-color: var(--mz-gray-400, $input-disabled-solid-color);
   }
 
   &:disabled:checked + span:not(.lever):before {
@@ -194,7 +210,7 @@
   }
 
   &:disabled:checked + span:not(.lever):after {
-    background-color: $input-disabled-solid-color;
-    border-color: $input-disabled-solid-color;
+    background-color: var(--mz-gray-400, $input-disabled-solid-color);
+    border-color: var(--mz-gray-400, $input-disabled-solid-color);
   }
 }

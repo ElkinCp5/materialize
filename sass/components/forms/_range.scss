@@ -1,5 +1,8 @@
-/* Range
-   ========================================================================== */
+// ==========================================================================
+// Materialize — Range Input
+// Migrated to CSS Custom Properties — Materialize v2.0
+// Vendor prefixes retained: required for cross-browser range styling.
+// ==========================================================================
 
 .range-field {
   position: relative;
@@ -20,10 +23,12 @@ input[type=range] {
   margin: 15px 0;
   padding: 0;
 
-  &:focus {
-    outline: none;
-  }
+  &:focus { outline: none; }
 }
+
+// ---------------------------------------------------------------------------
+// Thumb bubble
+// ---------------------------------------------------------------------------
 
 input[type=range] + .thumb {
   position: absolute;
@@ -33,9 +38,8 @@ input[type=range] + .thumb {
   height: 0;
   width: 0;
   border-radius: 50%;
-  background-color: $radio-fill-color;
+  background-color: var(--mz-secondary, $radio-fill-color);
   margin-left: 7px;
-
   transform-origin: 50% 50%;
   transform: rotate(-45deg);
 
@@ -43,7 +47,7 @@ input[type=range] + .thumb {
     display: block;
     width: 30px;
     text-align: center;
-    color: $radio-fill-color;
+    color: var(--mz-secondary, $radio-fill-color);
     font-size: 0;
     transform: rotate(45deg);
   }
@@ -52,7 +56,7 @@ input[type=range] + .thumb {
     border-radius: 50% 50% 50% 0;
 
     .value {
-      color: $input-background;
+      color: var(--mz-bg-primary, $input-background);
       margin-left: -1px;
       margin-top: 8px;
       font-size: 10px;
@@ -60,10 +64,13 @@ input[type=range] + .thumb {
   }
 }
 
-// Shared
+// ---------------------------------------------------------------------------
+// Track + Thumb mixins
+// ---------------------------------------------------------------------------
+
 @mixin range-track {
   height: $track-height;
-  background: #c2c0c2;
+  background: var(--mz-gray-300, #c2c0c2);
   border: none;
 }
 
@@ -72,11 +79,14 @@ input[type=range] + .thumb {
   height: $range-height;
   width: $range-width;
   border-radius: 50%;
-  background: $radio-fill-color;
-  transition: box-shadow .3s;
+  background: var(--mz-secondary, $radio-fill-color);
+  transition: box-shadow var(--mz-duration-base, .3s) var(--mz-ease);
 }
 
+// ---------------------------------------------------------------------------
 // WebKit
+// ---------------------------------------------------------------------------
+
 input[type=range] {
   -webkit-appearance: none;
 }
@@ -88,22 +98,21 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
   @include range-thumb;
   -webkit-appearance: none;
-  background-color: $radio-fill-color;
+  background-color: var(--mz-secondary, $radio-fill-color);
   transform-origin: 50% 50%;
   margin: -5px 0 0 0;
-
 }
 
 .keyboard-focused input[type=range]:focus:not(.active)::-webkit-slider-thumb {
-  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
+  box-shadow: 0 0 0 10px rgba(var(--mz-secondary-rgb), .26);
 }
 
-// FireFox
-input[type=range] {
-  /* fix for FF unable to apply focus style bug  */
-  border: 1px solid white;
+// ---------------------------------------------------------------------------
+// Firefox
+// ---------------------------------------------------------------------------
 
-  /*required for proper track sizing in FF*/
+input[type=range] {
+  border: 1px solid var(--mz-bg-primary, white); // FF track sizing fix
 }
 
 input[type=range]::-moz-range-track {
@@ -119,37 +128,33 @@ input[type=range]::-moz-range-thumb {
   margin-top: -5px;
 }
 
-// hide the outline behind the border
 input[type=range]:-moz-focusring {
-  outline: 1px solid #fff;
+  outline: 1px solid var(--mz-bg-primary, #fff);
   outline-offset: -1px;
 }
 
 .keyboard-focused input[type=range]:focus:not(.active)::-moz-range-thumb {
-  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
+  box-shadow: 0 0 0 10px rgba(var(--mz-secondary-rgb), .26);
 }
 
-// IE 10+
+// ---------------------------------------------------------------------------
+// IE 10+ (legacy support — kept for compatibility)
+// ---------------------------------------------------------------------------
+
 input[type=range]::-ms-track {
   height: $track-height;
-
-  // remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead
   background: transparent;
-
-  // leave room for the larger thumb to overflow with a transparent border */
   border-color: transparent;
   border-width: 6px 0;
-
-  /*remove default tick marks*/
   color: transparent;
 }
 
 input[type=range]::-ms-fill-lower {
-  background: #777;
+  background: var(--mz-gray-600, #777);
 }
 
 input[type=range]::-ms-fill-upper {
-  background: #ddd;
+  background: var(--mz-gray-300, #ddd);
 }
 
 input[type=range]::-ms-thumb {
@@ -157,5 +162,5 @@ input[type=range]::-ms-thumb {
 }
 
 .keyboard-focused input[type=range]:focus:not(.active)::-ms-thumb {
-  box-shadow: 0 0 0 10px rgba($radio-fill-color, .26);
+  box-shadow: 0 0 0 10px rgba(var(--mz-secondary-rgb), .26);
 }

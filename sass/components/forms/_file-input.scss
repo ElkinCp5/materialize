@@ -1,5 +1,9 @@
-/* File Input
-   ========================================================================== */
+// ==========================================================================
+// Materialize — File Input
+// Migrated to CSS Custom Properties — Materialize v2.0
+// Vendor prefix retained: ::-webkit-file-upload-button (required to hide
+// the native button — no standard equivalent exists).
+// ==========================================================================
 
 .file-field {
   position: relative;
@@ -9,12 +13,15 @@
     padding-left: 10px;
   }
 
-  input.file-path { width: 100%; }
+  input.file-path {
+    width: 100%;
+    color: var(--mz-text-primary);
+  }
 
   .btn {
     float: left;
-    height: $input-height;
-    line-height: $input-height;
+    height: var(--mz-input-height, $input-height);
+    line-height: var(--mz-input-height, $input-height);
   }
 
   span {
@@ -22,8 +29,7 @@
   }
 
   input[type=file] {
-
-    // Needed to override webkit button
+    // Required to override the native button — no standard equivalent.
     &::-webkit-file-upload-button {
       display: none;
     }
@@ -39,6 +45,5 @@
     font-size: 20px;
     cursor: pointer;
     opacity: 0;
-    filter: alpha(opacity=0);
   }
 }

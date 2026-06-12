@@ -1,15 +1,18 @@
-/* Select Field
-   ========================================================================== */
+// ==========================================================================
+// Materialize — Select Field
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
 
 select.browser-default { opacity: 1; }
+
 select {
   opacity: 0;
-  background-color: $select-background;
+  background-color: var(--mz-bg-primary, $select-background);
   width: 100%;
   padding: $select-padding;
-  border: $select-border;
-  border-radius: $select-radius;
-  height: $input-height;
+  border: var(--mz-border-width, 1px) solid var(--mz-border-secondary, $select-border);
+  border-radius: var(--mz-border-radius-sm, $select-radius);
+  height: var(--mz-input-height, $input-height);
 }
 
 .select-label {
@@ -49,30 +52,30 @@ select {
     pointer-events: none;
   }
 
-  & + label:after {
-    @extend %input-after-style;
-  }
+  & + label:after { @extend %input-after-style; }
 
   position: relative;
 
   input.select-dropdown {
     &:focus {
-      border-bottom: 1px solid $input-focus-color;
+      border-bottom: 1px solid var(--mz-secondary, $input-focus-color);
     }
+
     position: relative;
     cursor: pointer;
     background-color: transparent;
     border: none;
-    border-bottom: $input-border;
+    border-bottom: var(--mz-border-width, 1px) solid var(--mz-border-primary, $input-border-color);
     outline: none;
-    height: $input-height;
-    line-height: $input-height;
+    height: var(--mz-input-height, $input-height);
+    line-height: var(--mz-input-height, $input-height);
     width: 100%;
-    font-size: $input-font-size;
+    font-size: var(--mz-input-font-size, $input-font-size);
     margin: $input-margin;
     padding: 0;
     display: block;
-    user-select:none;
+    color: var(--mz-text-primary);
+    user-select: none;
     z-index: 1;
   }
 
@@ -83,17 +86,16 @@ select {
     bottom: 0;
     margin: auto 0;
     z-index: 0;
-    fill: rgba(0,0,0,.87);
+    fill: var(--mz-text-primary, rgba(0, 0, 0, .87));
   }
 
   & + label {
     position: absolute;
     top: -26px;
-    font-size: $label-font-size;
+    font-size: var(--mz-font-size-sm, $label-font-size);
   }
 
-  // Hide select with overflow hidden instead of using display none
-  // (this prevents form validation errors with hidden form elements)
+  // Hide select with overflow hidden (avoids form validation issues)
   .hide-select {
     width: 0;
     height: 0;
@@ -104,56 +106,67 @@ select {
   }
 }
 
-// Disabled styles
+// ---------------------------------------------------------------------------
+// Disabled states
+// ---------------------------------------------------------------------------
+
 select:disabled {
-  color: $input-disabled-color;
+  color: var(--mz-text-disabled, $input-disabled-color);
 }
 
 .select-wrapper.disabled {
   + label {
-    color: $input-disabled-color;
+    color: var(--mz-text-disabled, $input-disabled-color);
   }
+
   .caret {
-    fill: $input-disabled-color;
+    fill: var(--mz-text-disabled, $input-disabled-color);
   }
 }
 
 .select-wrapper input.select-dropdown:disabled {
-  color: $input-disabled-color;
+  color: var(--mz-text-disabled, $input-disabled-color);
   cursor: default;
   user-select: none;
 }
 
 .select-wrapper i {
-  color: $select-disabled-color;
+  color: var(--mz-text-disabled, $select-disabled-color);
 }
 
 .select-dropdown li.disabled,
 .select-dropdown li.disabled > span,
 .select-dropdown li.optgroup {
-  color: $select-disabled-color;
+  color: var(--mz-text-disabled, $select-disabled-color);
   background-color: transparent;
 }
 
+// ---------------------------------------------------------------------------
+// Option states
+// ---------------------------------------------------------------------------
+
 body.keyboard-focused {
   .select-dropdown.dropdown-content li:focus {
-    background-color: $select-option-focus;
+    background-color: var(--mz-bg-tertiary, $select-option-focus);
   }
 }
 
 .select-dropdown.dropdown-content {
   li {
     &:hover {
-      background-color: $select-option-hover;
+      background-color: var(--mz-bg-tertiary, $select-option-hover);
     }
 
     &.selected {
-      background-color: $select-option-selected;
+      background-color: var(--mz-bg-secondary, $select-option-selected);
     }
   }
 }
 
-// Prefix Icons
+// ---------------------------------------------------------------------------
+// Prefix icons
+// ---------------------------------------------------------------------------
+
 .prefix ~ .select-wrapper {
   margin-left: 3rem;
   width: 92%;
@@ -162,26 +175,32 @@ body.keyboard-focused {
 
 .prefix ~ label { margin-left: 3rem; }
 
-// Icons
+// ---------------------------------------------------------------------------
+// Option icons
+// ---------------------------------------------------------------------------
+
 .select-dropdown li {
   img {
     height: $dropdown-item-height - 10;
-    width: $dropdown-item-height - 10;
+    width:  $dropdown-item-height - 10;
     margin: 5px 15px;
     float: right;
   }
 }
 
-// Optgroup styles
+// ---------------------------------------------------------------------------
+// Optgroup
+// ---------------------------------------------------------------------------
+
 .select-dropdown li.optgroup {
-  border-top: 1px solid $dropdown-hover-bg-color;
+  border-top: var(--mz-border-width, 1px) solid var(--mz-border-secondary, $dropdown-hover-bg-color);
 
   &.selected > span {
-    color: rgba(0, 0, 0, .7);
+    color: var(--mz-text-secondary, rgba(0, 0, 0, .7));
   }
 
   & > span {
-    color: rgba(0, 0, 0, .4);
+    color: var(--mz-text-tertiary, rgba(0, 0, 0, .4));
   }
 
   & ~ li.optgroup-option {

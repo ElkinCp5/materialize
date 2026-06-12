@@ -1,3 +1,8 @@
+// ==========================================================================
+// Materialize — Datepicker
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
+
 /* Modal */
 .datepicker-modal {
   max-width: 325px;
@@ -50,29 +55,30 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
+  color: var(--mz-text-primary);
 }
 
 
 /* Date Display */
 .datepicker-date-display {
   flex: 1 auto;
-  background-color: $secondary-color;
-  color: #fff;
+  background-color: var(--mz-secondary, $secondary-color);
+  color: var(--mz-text-inverse, #fff);
   padding: 20px 22px;
-  font-weight: 500;
+  font-weight: var(--mz-font-weight-medium, 500);
 
   .year-text {
     display: block;
     font-size: 1.5rem;
     line-height: 25px;
-    color: $datepicker-year;
+    color: rgba(var(--mz-color-white-rgb, 255, 255, 255), .7); // $datepicker-year
   }
 
   .date-text {
     display: block;
     font-size: 2.8rem;
     line-height: 47px;
-    font-weight: 500;
+    font-weight: var(--mz-font-weight-medium, 500);
   }
 }
 
@@ -84,8 +90,9 @@
 
 .datepicker-table {
   width: 280px;
-  font-size: 1rem;
+  font-size: var(--mz-font-size-lg, 1rem);
   margin: 0 auto;
+  color: var(--mz-text-primary);
 
   thead {
     border-bottom: none;
@@ -102,22 +109,22 @@
 
   abbr {
     text-decoration: none;
-    color: $datepicker-calendar-header-color;
+    color: var(--mz-text-tertiary, $datepicker-calendar-header-color);
   }
 
   td {
     &.is-today {
-      color: $secondary-color;
+      color: var(--mz-secondary, $secondary-color);
     }
 
     &.is-selected {
-      background-color: $secondary-color;
-      color: #fff;
+      background-color: var(--mz-secondary, $secondary-color);
+      color: var(--mz-text-inverse, #fff);
     }
 
     &.is-outside-current-month,
     &.is-disabled {
-      color: $datepicker-disabled-day-color;
+      color: var(--mz-text-disabled, $datepicker-disabled-day-color);
       pointer-events: none;
     }
 
@@ -128,7 +135,7 @@
 
 .datepicker-day-button {
   &:focus {
-    background-color: $datepicker-day-focus;
+    background-color: rgba(var(--mz-secondary-rgb), .25); // $datepicker-day-focus
   }
 
   background-color: transparent;
@@ -156,12 +163,12 @@
 .datepicker-clear,
 .datepicker-today,
 .datepicker-done {
-  color: $secondary-color;
+  color: var(--mz-secondary, $secondary-color);
   padding: 0 1rem;
 }
 
 .datepicker-clear {
-  color: $error-color;
+  color: var(--mz-danger, $error-color);
 }
 
 

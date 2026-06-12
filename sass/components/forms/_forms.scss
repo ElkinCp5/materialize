@@ -1,16 +1,21 @@
-// Remove Focus Boxes
+// ==========================================================================
+// Materialize — Forms Entry Point
+// Migrated to CSS Custom Properties — Materialize v2.0
+// ==========================================================================
+
+// Remove focus outlines — replaced with CSS variable-based focus ring
 select:focus {
-  outline: $select-focus;
+  outline: 1px solid var(--mz-secondary, $select-focus);
 }
 
 button:focus {
   outline: none;
-  background-color: $button-background-focus;
+  background-color: var(--mz-secondary-light, $button-background-focus);
 }
 
 label {
-  font-size: $label-font-size;
-  color: $input-border-color;
+  font-size: var(--mz-font-size-sm, $label-font-size);
+  color: var(--mz-text-secondary, $input-border-color);
 }
 
 @import 'input-fields';
